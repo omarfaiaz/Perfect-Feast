@@ -1,0 +1,136 @@
+<footer class="bg-[#232323] text-white pt-12 pb-16 px-4">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8">
+    <!-- Logo and Copyright -->
+    <div class="flex flex-col items-start md:w-1/5 mb-8 md:mb-0">
+      {% if section.settings.logo %}
+        <img
+          src="{{ section.settings.logo | image_url: width: 180 }}"
+          alt="{{ shop.name }}"
+          class="mb-4"
+          style="max-width:180px;">
+      {% else %}
+        <span class="text-3xl font-bold text-brandPrimary mb-4">PerfectFeast</span>
+      {% endif %}
+      <div class="text-sm mb-2">
+        &copy; {{ 'now' | date: '%Y' }} {{ section.settings.copyright_text | default: shop.name }}
+      </div>
+      <div class="text-sm text-gray-400">
+        {{ section.settings.copyright_subtext | default: "All rights reserved." }}
+      </div>
+    </div>
+
+    <!-- Menu Links (2 columns) -->
+    <div class="md:w-1/3 w-full">
+      <ul id="footer-menu" class="flex flex-wrap">
+        {% assign menu_links = linklists[section.settings.menu].links %}
+        {% for link in menu_links %}
+          <li class="w-1/2 mb-3">
+            <a href="{{ link.url }}" class="text-white text-base hover:text-brandPrimary transition-colors duration-150">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="md:w-1/4 w-full flex flex-col items-start">
+      <div class="mb-4">
+        <div class="text-[#999] mb-3">{{ section.settings.address | default: "461 East 1000 South, Suite B<br>Pleasant Grove, UT 84062" }}</div>
+        <div class="flex items-center gap-2 mb-3">
+          <div>
+            {% render 'envelop-icon' %}</div>
+          <a href="mailto:{{ section.settings.email | default: "info@pfrcorporategifts.com" }}" class="!text-white">{{ section.settings.phone | default: "801-569-2381" }}</a>
+        </div>
+        <div class="flex items-center gap-2 mb-5">
+
+          <div>
+            {% render 'phone-icon' %}</div>
+          <a href="mailto:{{ section.settings.email | default: "info@pfrcorporategifts.com" }}" class="!text-white">{{ section.settings.email }}</a>
+        </div>
+        {% if section.settings.cta_text and section.settings.cta_link %}
+          <a href="{{ section.settings.cta_link }}" class="btn btn--primary">{{ section.settings.cta_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Payment -->
+    <div class="md:w-1/5 w-full flex justify-center flex-col items-center">
+      {% if section.settings.security_badge %}
+        <img
+          src="{{ section.settings.security_badge | image_url: width: 100 }}"
+          alt="Secure"
+          class="mt-4 w-auto">
+      {% endif %}
+
+      {% if section.settings.payment_img %}
+        <div class="flex items-center gap-2 mt-4">
+          <img
+            src="{{ section.settings.payment_img | image_url: width: 100 }}"
+            class="w-auto"
+            alt="Secure Payments">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Footer Logo"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Footer Menu"
+      },
+      {
+        "type": "text",
+        "id": "copyright_text",
+        "label": "Copyright Text",
+        "default": "PFR Corporate Gifts, LLC."
+      },
+      {
+        "type": "text",
+        "id": "copyright_subtext",
+        "label": "Copyright Subtext",
+        "default": "All rights reserved."
+      }, {
+        "type": "text",
+        "id": "address",
+        "label": "Address",
+        "default": "461 East 1000 South, Suite B<br>Pleasant Grove, UT 84062"
+      }, {
+        "type": "text",
+        "id": "phone",
+        "label": "Phone",
+        "default": "801-569-2381"
+      }, {
+        "type": "text",
+        "id": "email",
+        "label": "Email",
+        "default": "info@pfrcorporategifts.com"
+      }, {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA Button Text",
+        "default": "ORDER NOW"
+      }, {
+        "type": "url",
+        "id": "cta_link",
+        "label": "CTA Button Link",
+        "default": "/"
+      }, {
+        "type": "image_picker",
+        "id": "security_badge",
+        "label": "Security Badge"
+      }, {
+        "type": "image_picker",
+        "id": "payment_img",
+        "label": "Payment Type Images"
+      }
+    ]
+  }
+{% endschema %}

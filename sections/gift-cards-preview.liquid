@@ -1,0 +1,97 @@
+<section class="bg-brandNeutral py-16">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row gap-8 items-center">
+      <div class="w-full lg:w-3/5">
+        <h3 class="text-2xl lg:text-3xl mb-10">{{ section.settings.heading | default: 'GIFT CERTIFICATES FOR TURKEY, HAM & MORE!' }}</h3>
+        <div class="flex gap-4">
+          {% if section.settings.button1_text != blank %}
+            <a href="{{ section.settings.button1_url | default: '#' }}" class="btn max-w-sm btn--primary ">
+              {{ section.settings.button1_text }}
+            </a>
+          {% endif %}
+          {% if section.settings.button2_text != blank %}
+            <a href="{{ section.settings.button2_url | default: '#' }}" class="btn max-w-sm btn--secondary border !border-brandPrimary">
+              {{ section.settings.button2_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="w-full lg:w-2/5">
+        {% assign gift_collection = collections[section.settings.collection] %}
+        {% if gift_collection and gift_collection.products.size > 0 %}
+          <div class="gift-card__images">
+            {% for item in gift_collection.products limit: 4 %}
+              <div class="bg-white overflow-hidden shadow">
+                {% if item.featured_image %}
+                  <img
+                    src="{{ item.featured_image | image_url: width:650 }}"
+                    alt="{{ item.title }}"
+                    class="w-auto h-auto"
+                    loading="lazy"
+                    width="{{ item.featured_image.width }}"
+                    height="{{ item.featured_image.height }}">
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'w-full h-48 object-cover bg-gray-200' }}
+                {% endif %}
+                <div class="p-4">
+                  <p>
+                    <strong>{{ item.title }}</strong>
+                  </p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="bg-white rounded-lg p-8 text-center">
+            <p class="text-gray-600">No gift certificates available. Please select a collection in theme settings.</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Gift Cards Preview",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "GIFT CERTIFICATES FOR TURKEY, HAM & MORE!"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Gift certificates collection"
+      },
+      {
+        "type": "text",
+        "id": "button1_text",
+        "label": "First button text",
+        "default": "Want a Reminder When It's Closer to the Holidays"
+      },
+      {
+        "type": "url",
+        "id": "button1_url",
+        "label": "First button URL"
+      }, {
+        "type": "text",
+        "id": "button2_text",
+        "label": "Second button text",
+        "default": "See What Our Customers Are Saying"
+      }, {
+        "type": "url",
+        "id": "button2_url",
+        "label": "Second button URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Gift Cards Preview"
+      }
+    ]
+  }
+{% endschema %}

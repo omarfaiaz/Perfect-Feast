@@ -1,0 +1,155 @@
+<section class="process-box py-16 bg-white">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <h2 class="text-center text-3xl md:text-4xl font-bold mb-3 text-gray-800">
+      {{ section.settings.title | default: "Experience Our Hands-on Approach" }}
+    </h2>
+    <p class="text-center text-gray-500 mb-10">{{ section.settings.subtitle | default: "3-step process for enterprises:" }}</p>
+    <div class="flex flex-col md:flex-row gap-6 justify-center items-stretch">
+      {% for block in section.blocks %}
+        <div class="bg-white rounded-xl shadow-lg border border-brandPrimary/30 flex-1 px-6 py-8 flex flex-col items-center text-center transition hover:shadow-xl">
+          <div class="mb-4">
+            <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brandPrimary text-white text-xl font-bold mb-2">
+              {{ forloop.index }}
+            </span>
+          </div>
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-gray-800">{{ block.settings.step_title }}</h3>
+          <p class="text-gray-600 mb-4">{{ block.settings.step_description }}</p>
+          <ul class="text-left text-sm text-gray-600 space-y-2">
+            {% if block.settings.step_point_1 != blank %}
+              <li class="flex items-start gap-2">
+                <span class="text-brandPrimary font-bold text-lg">✔</span>
+                <span>{{ block.settings.step_point_1 }}</span>
+              </li>
+            {% endif %}
+            {% if block.settings.step_point_2 != blank %}
+              <li class="flex items-start gap-2">
+                <span class="text-brandPrimary font-bold text-lg">✔</span>
+                <span>{{ block.settings.step_point_2 }}</span>
+              </li>
+            {% endif %}
+            {% if block.settings.step_point_3 != blank %}
+              <li class="flex items-start gap-2">
+                <span class="text-brandPrimary font-bold text-lg">✔</span>
+                <span>{{ block.settings.step_point_3 }}</span>
+              </li>
+            {% endif %}
+            {% if block.settings.step_point_4 != blank %}
+              <li class="flex items-start gap-2">
+                <span class="text-brandPrimary font-bold text-lg">✔</span>
+                <span>{{ block.settings.step_point_4 }}</span>
+              </li>
+            {% endif %}
+            {% if block.settings.step_point_5 != blank %}
+              <li class="flex items-start gap-2">
+                <span class="text-brandPrimary font-bold text-lg">✔</span>
+                <span>{{ block.settings.step_point_5 }}</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "How It Works",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title",
+        "default": "Experience Our Hands-on Approach"
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Section Subtitle",
+        "default": "3-step process for enterprises:"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "step",
+        "name": "Step",
+        "settings": [
+          {
+            "type": "text",
+            "id": "step_title",
+            "label": "Step Title",
+            "default": "Step Title"
+          },
+          {
+            "type": "text",
+            "id": "step_description",
+            "label": "Step Description",
+            "default": "Step description goes here."
+          },
+          {
+            "type": "text",
+            "id": "step_point_1",
+            "label": "Step Point 1",
+       
+          },
+          {
+            "type": "text",
+            "id": "step_point_2",
+            "label": "Step Point 2",
+       
+          }, {
+            "type": "text",
+            "id": "step_point_3",
+            "label": "Step Point 3",
+         
+          }, {
+            "type": "text",
+            "id": "step_point_4",
+            "label": "Step Point 4",
+           
+          }, {
+            "type": "text",
+            "id": "step_point_5",
+            "label": "Step Point 5",
+          
+          }
+        ]
+      }
+    ],
+    "max_blocks": 3,
+    "presets": [
+      {
+        "name": "Process Box",
+        "blocks": [
+          {
+            "type": "step",
+            "settings": {
+              "step_title": "Design Your Employee Gifts",
+              "step_description": "Create the perfect gift program tailored to your organization",
+              "step_point_1": "Certificate values and types",
+              "step_point_2": "Custom branding, cards, and messaging",
+              "step_point_3": "Delivery methods, locations, and timing"
+            }
+          }, {
+            "type": "step",
+            "settings": {
+              "step_title": "Choose Shipping Method",
+              "step_description": "Select the most convenient delivery option for your team",
+              "step_point_1": "Bulk shipping to your office",
+              "step_point_2": "Direct delivery to employees",
+              "step_point_3": "Hybrid distribution options"
+            }
+          }, {
+            "type": "step",
+            "settings": {
+              "step_title": "We Handle Everything Else",
+              "step_description": "Sit back and let us manage all the logistics and support",
+              "step_point_1": "Order processing and fulfillment",
+              "step_point_2": "Customer service and support",
+              "step_point_3": "Reporting and analytics"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

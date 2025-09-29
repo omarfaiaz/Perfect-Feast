@@ -1,0 +1,62 @@
+<!-- sections/link-box.liquid -->
+{% comment %} 
+                                   Link Boxes Section
+                                    Features: Boxes with titles, subtitles, and optional links
+{% endcomment %}
+
+<section class="py-12" style="{% if section.settings.bg_image %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}'); background-size: cover; background-position: center;{% endif %}">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+      {% for block in section.blocks %}
+        <div class="bg-white shadow-md rounded-md p-8 flex flex-col items-center justify-center text-center w-full max-w-xs h-56">
+          {% if block.settings.link %}
+            <a href="{{ block.settings.link }}" class="flex items-center justify-center text-center w-full h-full">
+          {% endif %}
+
+          <div class="text-xl font-medium text-gray-800 mb-2">{{ block.settings.title }}</div>
+
+          {% if block.settings.link %}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Link Boxes",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "box",
+        "name": "Link Box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Add Title Here"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Link Boxes",
+       
+      }
+    ]
+  }
+{% endschema %}

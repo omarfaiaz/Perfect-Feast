@@ -1,0 +1,470 @@
+<!-- sections/holiday-gifting-hero.liquid -->
+{% comment %} 
+                                                          Corporate Holiday Gifting Hero Section
+                                                          Features: Background image with overlay, customizable content, add-to-cart form 
+{% endcomment %}
+
+{%- liquid
+  assign bg_image = section.settings.background_image
+  assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.0
+-%}
+
+<section class="hero-with-form relative min-h-screen lg:min-h-[600px] flex items-center justify-center px-4 py-12 lg:py-0">
+
+  {% if bg_image %}
+    <div class="absolute inset-0 z-0">
+      {{ bg_image | image_url: width: 1920 | image_tag: 
+ loading: 'lazy',
+ class: 'w-full h-full object-cover',
+ alt: bg_image.alt | default: section.settings.title
+      }}
+    </div>
+  {% else %}
+    <!-- Fallback gradient background -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-r from-gray-600 to-gray-800"></div>
+  {% endif %}
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 z-10 bg-black" style="opacity: {{ overlay_opacity }};"></div>
+
+  <!-- Content Container -->
+  <div class="relative z-20 w-full max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+
+      <!-- Left Content -->
+      <div class="w-full lg:w-3/5 text-white space-y-6 text-center lg:text-left">
+        {% if section.settings.title != blank %}
+          <div class="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight">
+            {{ section.settings.title }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <p class="text-gray-200 max-w-2xl mx-auto lg:mx-0">
+            {{ section.settings.description }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.show_enterprise_button and section.settings.enterprise_button_text != blank %}
+          <div class="pt-4">
+            <a href="{{ section.settings.enterprise_button_url | default: '#' }}" class="btn btn--primary">
+              {{ section.settings.enterprise_button_text }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Right Form -->
+      <div class="w-full lg:w-2/5 flex justify-center lg:justify-end">
+        <div class="bg-white rounded-lg p-6 sm:p-8 w-full max-w-sm shadow-2xl">
+          {% if section.settings.form_title != blank %}
+            <h3 class="text-xl font-semibold text-gray-800 mb-6 text-center">
+              {{ section.settings.form_title }}
+            </h3>
+          {% endif %}
+
+          <form
+            action="/cart/add"
+            method="post"
+            enctype="multipart/form-data"
+            class="space-y-4">
+
+            {% if section.settings.featured_collection != blank %}
+              {% assign collection = collections[section.settings.featured_collection] %}
+              {% assign products_all = collection.products %}
+
+                {% if products_all.size > 0 %}
+                <!-- Product Selection (field 1) -->
+                <div class="space-y-2">
+                  <label for="product-select-{{ section.id }}" class="block text-sm font-medium text-gray-700">
+                    {{ section.settings.product_label | default: 'Choose Product' }}
+                  </label>
+                  <select
+                    id="product-select-{{ section.id }}"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-700">
+                    <option
+                      value=""
+                      selected
+                      disabled>Select a product</option>
+                    {% for product in products_all limit: 50 %}
+                      <option value="{{ product.id }}">{{ product.title }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <!-- Variant Selection: Value (field 2) -->
+                <div class="space-y-2">
+                  <label for="variant-select-{{ section.id }}" class="block text-sm font-medium text-gray-700">
+                    {{ section.settings.variant_label | default: 'Choose Value' }}
+                  </label>
+
+                  <div class="relative">
+                    <select
+                      id="variant-select-{{ section.id }}"
+                      name="id"
+                      required
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white text-gray-700">
+                      <option
+                        value=""
+                        selected
+                        disabled>Select a value</option>
+                    </select>
+
+                    <!-- overlay captures clicks when no product chosen -->
+                    <button
+                      type="button"
+                      tabindex="-1"
+                      aria-hidden="true"
+                      class="variant-overlay absolute inset-0 w-full h-full bg-transparent cursor-pointer"
+                      style="display: none;"></button>
+                  </div>
+
+                  <p id="variant-help-{{ section.id }}" class="mt-1 !text-xs text-red-600 hidden">Please select a product first.</p>
+                </div>
+
+                <!-- Quantity (field 3) -->
+                <div class="space-y-2">
+                  <label for="quantity-{{ section.id }}" class="block text-sm font-medium text-gray-700">
+                    {{ section.settings.quantity_label | default: 'Enter Quantity' }}
+                  </label>
+                  <input
+                    type="number"
+                    id="quantity-{{ section.id }}"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                </div>
+
+                <button type="submit" class="w-full bg-red-500 hover:bg-brandPrimary text-white font-semibold py-3 px-4 rounded-md transition-colors duration-300 uppercase tracking-wide mt-6">
+                  {{ section.settings.add_to_cart_text | default: 'Add to Cart' }}
+                </button>
+
+                {%- comment -%} 
+                                                                                                                                                                                                                                                                                                                                                                                                            JSON data for JS: include ALL variants (we’ll decide in JS whether to hide sold-out). 
+                                                                                                                                                                                                                                                                                                                                                                {%- endcomment -%}
+                <script type="application/json" id="pv-data-{{ section.id }}">
+                          {
+                            "products": [
+                              {%- for product in products_all limit: 50 -%}
+                                {
+                                  "id": {{ product.id }},
+                                  "title": {{ product.title | json }},
+                                  "variants": [
+                  {%- for variant in product.variants -%}
+                    {
+                      "id": {{ variant.id }},
+                      "label": {{ variant.option1 | json }},
+                      "price": {{ variant.price | money | json }},
+                      "available": {{ variant.available | json }}
+                    }{%- unless forloop.last -%},{%- endunless -%}
+                  {%- endfor -%}
+                                  ]
+                                }{%- unless forloop.last -%},{%- endunless -%}
+                              {%- endfor -%}
+                            ]
+                          }
+                </script>
+
+                <script>
+                    (function() {
+                      const sectionId = "{{ section.id }}";
+                      const productSel = document.getElementById("product-select-" + sectionId);
+                      const variantSel = document.getElementById("variant-select-" + sectionId);
+                      const dataEl = document.getElementById("pv-data-" + sectionId);
+                      const overlay = variantSel ? variantSel.parentElement.querySelector('.variant-overlay') : null;
+                      const helpEl = document.getElementById('variant-help-' + sectionId);
+                  
+                      if (!productSel || !variantSel || !dataEl) return;
+                  
+                      let data = { products: [] };
+                      try { data = JSON.parse(dataEl.textContent || "{}"); } catch(e) {}
+                  
+                      function showHelpOnce() {
+                        if (!helpEl) return;
+                        helpEl.classList.remove('hidden');
+                        clearTimeout(helpOnceTimer);
+                        var t = setTimeout(function(){
+                          if (helpEl) helpEl.classList.add('hidden');
+                        }, 2500);
+                        helpOnceTimer = t;
+                      }
+                      var helpOnceTimer = null;
+                  
+                      function updateOverlayVisibility() {
+                        if (!overlay) return;
+                        if (!productSel.value) {
+                          overlay.style.display = 'block';
+                          overlay.setAttribute('aria-hidden','false');
+                        } else {
+                          overlay.style.display = 'none';
+                          overlay.setAttribute('aria-hidden','true');
+                        }
+                      }
+                  
+                      function populateVariants(productId) {
+                        variantSel.innerHTML = '<option value="" selected disabled>Select a value</option>';
+                        // mark as temporarily disabled visually (we still capture clicks via overlay)
+                        variantSel.disabled = false;
+                  
+                        const pid = parseInt(productId, 10);
+                        const p = (data.products || []).find(x => x.id === pid);
+                        if (!p || !p.variants || !p.variants.length) {
+                          updateOverlayVisibility();
+                          return;
+                        }
+                  
+                        // Prefer showing available values first; keep sold-out but disabled.
+                        const av  = p.variants.filter(v => v.available);
+                        const oos = p.variants.filter(v => !v.available);
+                  
+                        function addOpt(v, disabled) {
+                          const opt = document.createElement('option');
+                          opt.value = String(v.id);
+                          opt.textContent = v.label + (disabled ? ' — Sold out' : '');
+                          opt.disabled = !!disabled;
+                          variantSel.appendChild(opt);
+                        }
+                  
+                        av.forEach(v => addOpt(v, false));
+                        oos.forEach(v => addOpt(v, true));
+                  
+                        updateOverlayVisibility();
+                      }
+                  
+                      // overlay click => show help and focus product select
+                      if (overlay) {
+                        overlay.addEventListener('click', function(e){
+                          e.preventDefault();
+                          if (!productSel.value) {
+                            if (helpEl) {
+                              helpEl.classList.remove('hidden');
+                              clearTimeout(helpOnceTimer);
+                              helpOnceTimer = setTimeout(function(){ helpEl.classList.add('hidden'); }, 2500);
+                            } else {
+                              alert('Please select a product first.');
+                            }
+                            productSel.focus();
+                          }
+                        });
+                      }
+                  
+                      productSel.addEventListener('change', function() {
+                        populateVariants(this.value);
+                        // after product chosen, focus variant
+                        setTimeout(function(){
+                          variantSel.focus();
+                        }, 10);
+                      });
+                  
+                      // initialize overlay / variants state
+                      updateOverlayVisibility();
+                      if (productSel.value) populateVariants(productSel.value);
+                    })();
+                </script>
+
+              {% else %}
+                <p class="text-sm text-gray-600">No products in the selected collection.</p>
+              {% endif %}
+            {% else %}
+              <div class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700">
+                  {{ section.settings.product_label | default: 'Choose Product' }}
+                </label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-500" disabled>
+                  <option>Please select a collection in theme settings</option>
+                </select>
+              </div>
+            {% endif %}
+          </form>
+
+          {% if section.settings.cta_btn_url and section.settings.cta_btn_text != blank %}
+            <a href="{{ section.settings.cta_btn_url }}" class="text-base text-center !text-gray-700 block underline">{{ section.settings.cta_btn_text }}</a>
+          {% endif %}
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero with Form",
+    "tag": "section",
+    "class": "holiday-gifting-hero-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image",
+        "info": "Recommended size: 1920x1080px or larger"
+      },
+      {
+        "type": "range",
+        "id": "overlay_opacity",
+        "label": "Overlay opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "default": 40
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      }, {
+        "type": "richtext",
+        "id": "title",
+        "label": "Heading",
+        "default": "<h1>Your Trusted Corporate Holiday Gifting Partner</h1>"
+      }, {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "The first and largest turkey, ham, and grocery gift certificate provider. Trusted by companies of all sizes. Accepted nationwide."
+      }, {
+        "type": "header",
+        "content": "Enterprise Button"
+      }, {
+        "type": "checkbox",
+        "id": "show_enterprise_button",
+        "label": "Show enterprise button",
+        "default": true
+      }, {
+        "type": "text",
+        "id": "enterprise_button_text",
+        "label": "Button text",
+        "default": "Enterprise Packages"
+      }, {
+        "type": "url",
+        "id": "enterprise_button_url",
+        "label": "Button link"
+      }, {
+        "type": "header",
+        "content": "Form Settings"
+      }, {
+        "type": "text",
+        "id": "form_title",
+        "label": "Form title",
+        "default": "Quick Checkout"
+      }, {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "Product collection",
+        "info": "Select a collection to display products in the form"
+      }, {
+        "type": "text",
+        "id": "product_label",
+        "label": "Product field label",
+        "default": "Choose Product"
+      }, {
+        "type": "text",
+        "id": "quantity_label",
+        "label": "Quantity field label",
+        "default": "Enter Quantity"
+      }, {
+        "type": "text",
+        "id": "add_to_cart_text",
+        "label": "Add to cart button text",
+        "default": "Add to Cart"
+      }, {
+        "type": "text",
+        "id": "cta_btn_text",
+        "label": "Call to Action Button Text"
+      }, {
+        "type": "url",
+        "id": "cta_btn_url",
+        "label": "Call to Action Button Link"
+      }, {
+        "type": "header",
+        "content": "Section Settings"
+      }, {
+        "type": "text",
+        "id": "section_id",
+        "label": "Section ID",
+        "info": "Optional: Add a custom ID for this section"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Holiday Gifting Hero",
+        "settings": {
+          "title": "<h1>Your Trusted Corporate Holiday Gifting Partner</h1>",
+          "description": "The first and largest turkey, ham, and grocery gift certificate provider. Trusted by companies of all sizes. Accepted nationwide.",
+          "show_enterprise_button": true,
+          "enterprise_button_text": "Enterprise Packages",
+          "form_title": "Quick Checkout",
+          "product_label": "Choose Product",
+          "quantity_label": "Enter Quantity",
+          "add_to_cart_text": "Add to Cart",
+          "overlay_opacity": 40
+        }
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  /* Additional custom styles if needed */
+  .holiday-gifting-hero-section select:focus,
+  .holiday-gifting-hero-section input:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+
+  .holiday-gifting-hero-section button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 1023px) {
+    .holiday-gifting-hero-section .grid {
+      gap: 2rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  // Enhanced form functionality
+  const forms = document.querySelectorAll('.holiday-gifting-hero-section form[action="/cart/add"]');
+  
+  forms.forEach(form => {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const productSelect = form.querySelector('select[name="id"]');
+    const quantityInput = form.querySelector('input[name="quantity"]');
+    
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+      if (!productSelect.value) {
+        e.preventDefault();
+        alert('Please select a product before adding to cart.');
+        return;
+      }
+      
+      // Disable button during submission
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Adding...';
+      
+      // Re-enable button after 2 seconds (adjust as needed)
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitBtn.getAttribute('data-original-text') || 'Add to Cart';
+      }, 2000);
+    });
+    
+    // Store original button text
+    if (submitBtn) {
+      submitBtn.setAttribute('data-original-text', submitBtn.textContent);
+    }
+  });
+  });
+</script>

@@ -1,0 +1,18 @@
+<div class="bg-white rounded shadow overflow-hidden">
+  <a href="{{ article.url }}" class="block">
+    {% if article.image %}
+      <img
+        src="{{ article.image | image_url: width: 400 }}"
+        alt="{{ article.title }}"
+        class="w-full h-72 object-cover" />
+    {% endif %}
+    <div class="p-4">
+      <span class="text-xs text-gray-400 mb-1 block">Blog</span>
+      <h4 class="text-base font-semibold text-gray-900 mb-2">{{ article.title }}</h4>
+      <div class="text-xs text-gray-500 mb-2">
+        By {{ article.author }} | Posted on {{ article.published_at | date: "%B %d, %Y" }}
+      </div>
+      <p class="text-gray-700 mb-2 line-clamp-2">{{ article.excerpt_or_content | strip_html | truncate: 80 }}</p>
+    </div>
+  </a>
+</div>

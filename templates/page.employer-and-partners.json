@@ -1,0 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "banner-hero": {
+      "type": "banner-img",
+      "settings": {
+        "banner_image": "shopify://shop_images/giftcert-header2.jpg",
+        "bg_color": "#ed2129",
+        "section_height": 560,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.6,
+        "overlay_text": "GET YOUR UNIQUECORPORATE GIFTCERTIFICATE TODAY!",
+        "subtext": "<p>Improve Employee Goodwill • Give Emotional Value • Tax Advantage for both Giver and Receiver</p>",
+        "button_text": "Order Now",
+        "button_link": "/"
+      }
+    },
+    "text_with_img_JcxBAq": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "medium",
+        "image": "shopify://shop_images/Turkey-and-Ham.webp",
+        "heading": "<h2>OUR CORPORATE GIFT CERTIFICATES</h2>",
+        "text": "<p>It’s no secret that people want to be appreciated — especially your<br/>employees and clients.</p><p>A great way to say “thank you” to your hard-working team, clients,<br/>and partners is to offer gifts that will stretch far enough to benefit<br/>their entire family.</p><p>That’s why many companies consistently choose gift certificates<br/>from Perfect Feast. With gift certificates that offer whole hams, turkeys, and more, the people associated with your business will have<br/>one less thing to worry about when it comes to dinnertime.</p>",
+        "button_text": "LEARN MORE",
+        "button_url": "",
+        "reverse_columns": false
+      }
+    },
+    "text_with_img_7cn3Kh": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "medium",
+        "image": "shopify://shop_images/employeegift.jpg",
+        "heading": "<p><strong>Corporate Gift Certificates forEmployees</strong></p>",
+        "text": "<p>Did you know that 66 percent of employees would quit their<br/>jobs if they feel unappreciated?<br/>Your employees deserve the best kind of appreciation. After all, if it<br/>weren’t for them, your business would not be where it is today What<br/>better way to show your gratitude than with corporate gift certificates for employees?<br/>Gift-giving has been proven to increase employee incentive, reduce<br/>turnover, boost morale and loyalty, improve employee wellness, increase retention, and drive daily performance. That’s a lot of benefits<br/>from one small gift!<br/>Perfect Feast offers gift certificates that can be used at virtually all<br/>supermarkets for beef steaks, turkeys, hams, and fruits and vegetables. These sorts of gifts are an excellent way to express your gratitude for your employees’ and customers’ loyalty<br/><br/></p>",
+        "button_text": "Contact Us",
+        "button_url": "shopify://pages/contact",
+        "reverse_columns": true
+      }
+    },
+    "text_with_img_EJRQ6W": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "large",
+        "image": "shopify://shop_images/pfrcorporate.jpg",
+        "heading": "<h2>Corporate Gift Certificates for<br/>Clients and Partners</h2>",
+        "text": "<p>Everybody loves a gift card or going out to lunch, but gift certificates<br/>are even better. They help retain current clients and let your partners<br/>know that they are appreciated while showing that you specifically<br/>thought of them.<br/>But you might be wondering: why a gift certificate instead of a preselected present?<br/>Finding a gift that will satisfy everybody is nearly impossible — but<br/>there is true value with gift certificates. Our gift certificates show your<br/>client or partner that you gave them a gift with specific thought while<br/>also providing the receiver flexibility to use it however they’d like.<br/>This means that as the employer, you don’t have to run your purchases through payroll, which makes it convenient to give these thoughtful seasonal gifts. You might even be able to receive tax benefits<br/>for gift-giving!<br/>The best part? Perfect Feast gift certificates are usable in<br/>stores across the United states!<br/>However, keep in mind that although holiday gifts are great,<br/>it’s best to show your clients and partners appreciation yearround. This way, they realize that you’re thinking of them<br/>throughout the year instead of when everybody else is giving<br/>and receiving gifts.<br/>So if you’re searching for a gift certificate to show your appreciation, then take a look at Perfect Feast’s wide variety.<br/><br/></p>",
+        "button_text": "LEARN MORE",
+        "button_url": "",
+        "reverse_columns": false
+      }
+    },
+    "simple_cta_NfDzyy": {
+      "type": "simple-cta",
+      "name": "Simple CTA",
+      "settings": {
+        "heading": "Gift With PFR Corporate Today",
+        "subtext": "Our corporate gift certificates are a perfect gift for your employees, clients, or partners. They offer unique and invaluable gifts where yourclients and employees can choose how and when they want to use it.You can also sign up for a holiday reminder with us so gifting your employees and partners is one less thing to worry about during theholiday season.Contact us today to learn more about our options!",
+        "text_alignment": "left",
+        "button_text": "Contact Us",
+        "button_url": "shopify://pages/contact"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "banner-hero",
+    "text_with_img_JcxBAq",
+    "text_with_img_7cn3Kh",
+    "text_with_img_EJRQ6W",
+    "simple_cta_NfDzyy"
+  ]
+}

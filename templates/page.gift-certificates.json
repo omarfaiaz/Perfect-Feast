@@ -1,0 +1,325 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner-hero": {
+      "type": "banner-img",
+      "settings": {
+        "banner_image": "shopify://shop_images/pfrcert2.jpg",
+        "bg_color": "#ed2129",
+        "section_height": 560,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.6,
+        "overlay_text": "GET YOUR HOLIDAY GIFT CERTIFICATES TODAY!",
+        "subtext": "<p>Improve Employee Goodwill • Give Emotional Value • Tax Advantage for both Giver and Receiver</p>",
+        "button_text": "Order Now",
+        "button_link": "#pfr-product-grid"
+      }
+    },
+    "product_grid_yz6x3C": {
+      "type": "product-grid",
+      "name": "Product Grid",
+      "settings": {
+        "collection": "gift-certificates",
+        "products_per_row": 3,
+        "products_limit": 12,
+        "show_heading": true,
+        "heading": "Corporate Gift Certificates",
+        "subheading": "<p>Choose from our premium selection of holiday turkey, ham, or product gift certificates</p>",
+        "show_vendor": false,
+        "show_price": false,
+        "show_product_tags": false,
+        "show_certificate_badge": false,
+        "certificate_text": "Gift Certificate",
+        "show_load_more": false,
+        "show_add_to_cart": true,
+        "variant_label": "Value",
+        "quantity_label": "Quantity",
+        "add_to_cart_text": "Add to Cart",
+        "view_details_text": "View Details",
+        "section_bg_color": "gray-50",
+        "heading_color": "gray-900",
+        "subheading_color": "gray-600",
+        "section_padding": 12
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "simple_cta_PFcxjy": {
+      "type": "simple-cta",
+      "name": "Simple CTA",
+      "settings": {
+        "heading": "Value Behind Gift Certificates",
+        "subtext": "Every company, regardless of its size or the industry in which it operates, should have a reasonable plan for giving corporate gifts. Managing corporate gifts is an art, not a science, but its principles and challenges are easy to master. Below you will find additional information about the added value of offering Gift Certificates as part of your employee gifting program.",
+        "text_alignment": "center",
+        "button_text": "",
+        "button_url": ""
+      }
+    },
+    "text_with_img_6eYcRR": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "large",
+        "image": "shopify://shop_images/pfrcorporate.jpg",
+        "heading": "<h2>Challenges & Opportunities</h2>",
+        "text": "<h4>Selecting the Best Corporate gifts may have a surprising<br/>impact, helping you meet the following challenges:</h4><ul><li>Enhancing Relationships with and Improving the Loyalty of Customers</li><li>Improving the service level of Suppliers</li><li>Developing Greater Employee Goodwill and Productivity</li><li>Increasing Top-of-Mind Awareness Among Prospective Customers</li><li>Improving Relationships with Government Agencies</li><li>Fostering Good Relationships with the Press</li></ul>",
+        "button_text": "",
+        "button_url": "",
+        "reverse_columns": true
+      }
+    },
+    "icon_text_description_WpU8FW": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_bottomline.png",
+        "heading": "Impact On The Bottom Line",
+        "description": "<p>Contrary to incentives or awards, which are based on merit through past or expected future performance, corporate gifts are generally given expecting little in return other than enhanced relationships with the recipients. The benefits are a little harder to measure but will nearly always be realized, often with very positive bottom line results. When you or your company are perceived in a more positive light, and when key people feel like they are recognized and appreciated, then goodwill, service, productivity, and loyalty improve. Other benefits may include more sales, lower costs, reduced employee turnover, and higher profitability.</p><p>Even if your intentions are purely altruistic (for example, giving a holiday gift just because “it’s the right thing to do” or because you want to reward your faithful employees), appropriate corporate gifts produce a favorable return on your investment. As a matter of fact, the more unselfish corporate gifts appear to be, the higher your return on investment may become. This type of gift giving will produce its own benefits, not only improving your bottom line but making the business more enjoyable for everyone involved.</p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_E7MMep": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_emotinoal-value.png",
+        "heading": "Give Emotional Value",
+        "description": "<p>The most effective corporate gifts, with the highest return on investment (in terms of enhanced relationships), are those that provide emotional value beyond the market value of the gift. In fact, some of the best corporate gifts have a very small dollar value but generate powerful positive emotions that make them very impactful. For example, the gift of a turkey or ham at Thanksgiving costs just a few dollars, but arouses wonderful nostalgic feelings and memories associated with that traditional American holiday. Few would not be warmed by memories</p><p>of Grandma’s house, the aroma of roast turkey in the kitchen, and being surrounded by beloved family and friends. Other examples of good corporate gifts are turkey or ham for Christmas or Easter, and the traditional gold watch at retirement. Food especially carries high emotional value for special occasions and is almost universally appreciated. Let family and cultural traditions work for you!<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_Xb8DUL": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_appearance.png",
+        "heading": "Appearance Is Everything",
+        "description": "<p>Because the highest ROI comes from emotional value, imprints of advertising slogans or logos, etc., on corporate gifts may actually decrease their impact. Self promotion of any kind included with the gift makes you and your company look selfish and cheap. Leave this for pens, hats, cups, golf balls, and other promotional items that serve entirely different purposes. The food items you present as corporate gifts on special occasions should have perceived high quality or you will be perceived as being cheap. Private label items and gift certificates to mass merchandise stores also carry a low value perception and should be avoided. Stay with well respected brand names. Regardless of how convenient they may be, cash or cash equivalents should rarely if ever be considered as <a href=\"/pages/employees-and-partners\" title=\"Employees and Partners\">corporate gifts to employees</a>, and NEVER to<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_Fxttia": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_appearance_1.png",
+        "heading": "Value Recognition",
+        "description": "<p>The value of the corporate gifts, both emotional and market value, is primarily recognized at the point of giving by both the giver and the receiver. For example, an employer who gives a gift certificate for a holiday turkey to an employee is better appreciated and fondly remembered whether or not the employee actually redeems the certificate. The retiring employee appreciates the gold watch whether or not he actually wears it. The employer has realized much of the benefit regardless of what happens after the point of giving.</p><p>However, you can maximize ROI by giving corporate gifts that will also have recognition value at other points in time, such as the point of use and the points of recollection. This is illustrated by the theoretical model below. The Y-axis shows perceived value. The X-axis shows the passage of time, with points of value recognition indicated. Three examples are shown by the lines representing corporate gifts of a Thanksgiving turkey, a gold watch at retirement, and a cash gift. The area under each line</p>",
+        "image": "shopify://shop_images/percieved.jpg",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_7gdAdb": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "heading": "",
+        "description": "<p>The cash gift carries the lowest ROI of the corporate gifts shown. Even though it may have a high market value at the point of giving it carries little emotional value and is quickly forgotten as it becomes mingled in the pocketbook with other cash. Most of the time the recipient will not even remember what was purchased, so the cash carries little recollection value. Note: Generic gift certificates and gift cards redeemable for any of a broad range of products are generally perceived the same as cash. The gold watch is appreciated at the time of giving and is fondly remembered for years thereafter. But if the recipient chooses not to wear it there is little value at the point of use.The Thanksgiving turkey has the highest ROI of the three examples of corporate gifts because it carries high emotional value at the point of giving as well as at the point of use and the point of recollection. Recollection value will be especially high if the employee receives the turkey year after year. Note: Gift certificates which can be applied to onlyone type of item (for example, a turkey or ham) are generally perceived the same as the item itself and will produce similar results.<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_q7P7i3": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_giftVSgive.png",
+        "heading": "Gifts vs. Give-Aways",
+        "description": "<p>As mentioned earlier, promotional incentives with logos or advertising slogans have no place in a corporate gifts strategy. They may be important, but with entirely different objectives. Usually they are used as forms of advertising, intended to increase brand awareness. Generally they do little to improve personal relationships. Gifts of trips, restaurant dinners, and tickets to sporting events often also have different objectives and are usually considered as on-going incentive promotional events tied to past or expected future performance. We recommend they be included in your company’s program for corporate gifts only when your company’s management or sales representatives will accompany the recipient to the event, thus maximizing the potential for enhanced personal relationships.<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_3Nxy6E": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_timing.png",
+        "heading": "Timing of gift giving",
+        "description": "<p>Corporate gifts should be appropriate to the occasion and to the relationship. Too frequent gifts reduce their perceived value. Consider limiting significant gift-giving to special occasions like holidays, birthdays, anniversaries, etc.<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_dnNY8w": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_timing_1.png",
+        "heading": "Do Your Homework!",
+        "description": "<p>Some companies restrict their employees in accepting gifts. Avoid embarrassing yourself and your customer – Make sure his company policies allow accepting corporate gifts, and what conditions may apply. Often this is resolved with a candid question posed to an assistant or secretary</p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_6cgPQP": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_liquor.png",
+        "heading": "Liquor and Wine",
+        "description": "<p>Although liquor as corporate gifts has been a traditional favorite in some circles, it is becoming less popular. It may be offensive to some whose religious or personal standards preclude liquor consumption. Never consider liquor or wine as corporate gifts unless you are absolutely certain it will be appreciated by every recipient.<br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_NXa76Q": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_govmnt-agencies.png",
+        "heading": "Government Agencies",
+        "description": "<p>Giving corporate gifts to government officers to promote goodwill towards your company or industry carries its own set of potential legal and ethical problems. Make sure your plan is carefully developed and reviewed by the attorneys and the CEO before proceeding. Avoid any appearance of impropriety.<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_rxDFG8": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_news-media.png",
+        "heading": "News Media",
+        "description": "<p>Proactively developing good relationships with the news media is a good idea that may come in handy during a public relations crisis. But most media companies have strict policies about accepting gifts. Generally your gift should not be given to a specific individual, but rather should be something that can be shared by everyone in his office. Go the extra mile to avoid any appearance of offering a bribe with your corporate gifts.<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_wrwm6N": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_giftVSgive.png",
+        "heading": "Gift Certificates as Corporate Gifts:",
+        "description": "<p>Not only may gift certificates enjoy some important tax advantages for both the giver and the receiver, they are nearly universally appreciated as equivalent to the item they are good for. So they carry most if not all of the emotional value of the item. As corporate gifts they are also significantly more convenient for both giver and receiver. For food gifts, certificates also avoid handling problems and costs, as well as food safety concerns with perishables.<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_3Rkxg9": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "icon_image": "shopify://shop_images/icons_check-laws.png",
+        "heading": "Check the Tax Laws",
+        "description": "<p>Check with your accountant or attorney about the tax implications of the corporate gifts you are considering. In some situations high value corporate gifts to employees must be treated as taxable income to the employee or may not be deductible by the employer. If the employee must pay taxes on the gift it may cause him enough frustration to negate the emotional value of the gift. However, if the dollar value of the gift is relatively low and it is given infrequently it may qualify for the “de minimis benefit”, would be non-taxable to the employee, and would be deductible as a non-wage business expense by the employer. This could include holiday gifts, occasional tickets for entertainment events, and flowers, fruit, books, etc., provided under special circumstances.</p><p>The IRS has ruled that items with a value exceeding $100 could not be considered de minimis, and in some circumstances the dollar limit may be lower. Cash may never be considered a de minimis benefit, nor can gift certificates that are redeemable for any of a significant variety of products. However, gift certificates that can be used only on one type of item are considered tax exempt as de minimis benefits. Please check with your tax attorney for more detailed advice.<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "icon_text_description_wrtMrq": {
+      "type": "icon-text-description",
+      "name": "Icon Text Description",
+      "settings": {
+        "heading": "",
+        "description": "<h3>As you consider gift certificate suppliers be sure to explore these important issues:</h3><p>For corporate gifts to employees, the certificate should be good for only one type of product, rather than a cash-equivalent certificate good for any of a broad variety of items. This will qualify it for the IRS de minimis exclusion, making the gift non-taxable<br/>for your employees.<br/>Make sure the certificates are redeemable at any retailer carrying the item, not just at specific stores. The broader the reach the<br/>more convenient it will be for your recipients, especially if they are spread out across a wide geography.<br/>The supplier should have a proactive retailer pre-selling program in place to make sure retailers will accept his certificate. This<br/>may dramatically reduce the frustration of your recipients having to search for a retailer who will accept it.<br/><br/></p>",
+        "text_alignment": "left"
+      }
+    },
+    "benefit_box_xXw4cQ": {
+      "type": "benefit-box",
+      "blocks": {
+        "benefit_N6UbQU": {
+          "type": "benefit",
+          "settings": {
+            "title": "Corporate gift certificates that are more convenient for the employee:",
+            "content": "<p>• Good on any brand.</p><p>• Good on any variety (fresh, frozen, whole, portions, sliced, etc.)</p><p>• Recipient selects the turkey or ham preferred at the time and place that are most convenient.</p>",
+            "icon_type": "emoji",
+            "emoji": "🎁",
+            "cta_text": "",
+            "cta_url": ""
+          }
+        },
+        "benefit_mri4qX": {
+          "type": "benefit",
+          "settings": {
+            "title": "Substantial pricing advantage with our corporate gift certificates vs actual turkeys or hams:",
+            "content": "<p>• Average holiday retail turkey feature prices are expected to be low – $.79 to $.99/lb. So our $15 certificate, for example, could get a turkey 15-19 lbs, or even larger if feature prices are lower, as they often are.</p><p>• On the other hand, wholesale frozen turkey prices could be over $1.10/lb. The same size turkey could cost you over $20, plus your own handling costs</p>",
+            "icon_type": "emoji",
+            "emoji": "💰",
+            "cta_text": "",
+            "cta_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_N6UbQU",
+        "benefit_mri4qX"
+      ],
+      "name": "Benefit Box",
+      "settings": {
+        "layout": "two-column",
+        "show_heading": true,
+        "heading": "Why Choose Our Gift Certificates?",
+        "subheading": "Discover the advantages of our premium gift certificate program",
+        "show_bottom_cta": false,
+        "bottom_cta_heading": "",
+        "bottom_cta_text": "",
+        "bottom_cta_button_text": "",
+        "bottom_cta_button_url": "",
+        "card_bg_color": "white",
+        "show_card_shadow": true,
+        "card_shadow_size": "lg",
+        "enable_hover_effect": true,
+        "card_hover_shadow": "xl",
+        "heading_size": "4xl",
+        "heading_weight": "bold",
+        "heading_color": "gray-900",
+        "benefit_title_size": "xl",
+        "benefit_title_weight": "semibold",
+        "benefit_title_color": "gray-900",
+        "benefit_text_size": "base",
+        "benefit_text_color": "gray-700",
+        "icon_size": "4xl",
+        "icon_svg_size": "10",
+        "cta_bg_color": "red-500",
+        "cta_hover_color": "red-600",
+        "cta_text_color": "white",
+        "section_padding": 12,
+        "heading_margin": 12,
+        "column_gap": 8,
+        "card_padding": 8,
+        "subheading_size": "lg",
+        "subheading_color": "gray-600"
+      }
+    },
+    "text_with_img_7cn3Kh": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "medium",
+        "image": "shopify://shop_images/giftbox.png",
+        "heading": "<h2>Gift With Perfect Feast Today</h2>",
+        "text": "<p>Our corporate gift certificates are a perfect gift for your employees, clients, or partners. They offer unique and invaluable gifts where your clients and employees can choose how and when they want to use them.</p><p>You can also sign up for a holiday reminder with us so gifting your employees and partners is one less thing to worry about during the holiday season.</p><p>Contact us today to learn more about our options!</p>",
+        "button_text": "Contact Us",
+        "button_url": "shopify://pages/contact",
+        "reverse_columns": false
+      }
+    }
+  },
+  "order": [
+    "banner-hero",
+    "product_grid_yz6x3C",
+    "main",
+    "simple_cta_PFcxjy",
+    "text_with_img_6eYcRR",
+    "icon_text_description_WpU8FW",
+    "icon_text_description_E7MMep",
+    "icon_text_description_Xb8DUL",
+    "icon_text_description_Fxttia",
+    "icon_text_description_7gdAdb",
+    "icon_text_description_q7P7i3",
+    "icon_text_description_3Nxy6E",
+    "icon_text_description_dnNY8w",
+    "icon_text_description_6cgPQP",
+    "icon_text_description_NXa76Q",
+    "icon_text_description_rxDFG8",
+    "icon_text_description_wrwm6N",
+    "icon_text_description_3Rkxg9",
+    "icon_text_description_wrtMrq",
+    "benefit_box_xXw4cQ",
+    "text_with_img_7cn3Kh"
+  ]
+}

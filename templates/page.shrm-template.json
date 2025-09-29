@@ -1,0 +1,149 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_with_app_form_HWbtBa": {
+      "type": "hero-with-app-form",
+      "custom_css": [
+        "h1 {font-size: 48px;}"
+      ],
+      "name": "Hero APP Form",
+      "settings": {
+        "background_image": "shopify://shop_images/Dinner_Table_2.jpg",
+        "overlay_opacity": 55,
+        "title": "<h1>HR Professional Creating a <strong>Corporate Gifting Program</strong>?</h1><h3>Partner with Perfect Feast Gift Certificates.</h3>",
+        "description": "Our Perfect Feast Gift Certificates team is thrilled to connect with HR professionals who are building employee wellness initiatives, recognition, or corporate gifting programs.",
+        "show_enterprise_button": false,
+        "enterprise_button_text": "",
+        "enterprise_button_url": "",
+        "embed_form": "<script src=\"https://js.hsforms.net/forms/embed/40212992.js\" defer></script>\n<div class=\"hs-form-frame\" data-region=\"na1\" data-form-id=\"62498c36-eee2-4931-991b-aed0f6b86513\" data-portal-id=\"40212992\"></div>",
+        "section_id": ""
+      }
+    },
+    "icon_text_description_fWTfqy": {
+      "type": "icon-text-description",
+      "custom_css": [
+        ".icon-text_description {padding-top: 64px !important; padding-bottom: 12px;}"
+      ],
+      "name": "Icon Text Description",
+      "settings": {
+        "heading": "Hi, we’re Perfect Feast Gift Certificates",
+        "description": "<h3>We are here to streamline your corporate gifting initiatives.</h3><p>Giving gifts is a powerful way to show appreciation and build relationships. Finding the right way to express your gratitude to employees can be challenging for an HR professional.</p><p>Partnering with Perfect Feast can provide a solution to these challenges. With our expertise in corporate gifting and employee recognition, we can help you create a streamlined program that effectively expresses appreciation to your employees or clients while ensuring your HR teams aren’t left feeling overwhelmed.</p>",
+        "text_alignment": "center"
+      }
+    },
+    "text_with_img_3kra49": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "large",
+        "image": "shopify://shop_images/shutterstock_433014541-e1686029707706.webp",
+        "heading": "<h2>All About Perfect Feast</h2>",
+        "text": "<h6>We at <a href=\"https://www.perfectfeast.com/?__hstc=123379348.d8d10aa403df9bde89db3fdd83a3b999.1758123534919.1758572341730.1758581386314.24&__hssc=123379348.4.1758581386314&__hsfp=2431490530\">Perfect Feast</a>are leaders in holiday gift recognition that is simple to deploy for managers, and emotionally impactful for their recipients.</h6><h6><br/>We specialize in <strong>tax-free, personalized gift certificates</strong> with the fastest delivery in the gift certificate space. You can use our gift certificates as a holiday or special occasion gift for employees.</h6><p>At Perfect Feast, we work hard to make sure you do not have to. Whether recognizing a single individual or thousands, we are here to support you.</p><p>From personalized Holiday Cards, to messages from the CEO, even down to the actual mailing and distribution, Perfect Feast Gift Certificates’ team members are your fast and reliable experts.</p><h6>We understand that every organization has unique requirements, and we strive to provide tailored solutions that meet your specific needs. Whether you have questions, need recommendations, or require assistance with bulk orders, our knowledgeable team is here to provide personalized support and ensure your satisfaction.<br/></h6>",
+        "button_text": "",
+        "button_url": "",
+        "reverse_columns": true
+      }
+    },
+    "icon_text_description_9whmCq": {
+      "type": "icon-text-description",
+      "custom_css": [
+        ".icon-text_description {padding-top: 64px; padding-bottom: 64px;}"
+      ],
+      "name": "Icon Text Description",
+      "settings": {
+        "heading": "Why Corporate Gifting?",
+        "description": "<p>Corporate gifting is a great way to express appreciation for your employees. A thoughtfully-crafted <a href=\"https://www.linkedin.com/pulse/5-reasons-why-corporate-gifting-important-woops-/?trk=organization-update-content_share-article\">corporate gifting strategy</a> is the backbone of any employee retention program.</p><p>Corporate gifting serves as a strategic tool for businesses to foster and strengthen relationships with clients, partners, and employees. Here are a few key reasons why corporate gifting is important:</p><h3><strong>Relationship Building</strong></h3><p>Corporate gifting allows companies to express appreciation and gratitude to their employees, clients, and partners, helping to build and nurture long-lasting relationships. By sending thoughtful and personalized gifts, businesses can create a positive impression, foster goodwill, and instill loyalty.</p><h3><strong>Employee Engagement and Motivation</strong></h3><p>Offering corporate gifts to employees is an effective way to recognize and reward their hard work, achievements, and dedication. It helps boost employee morale, motivation, and job satisfaction, leading to improved productivity, loyalty, and retention. Corporate gifting can also be used to celebrate milestones, birthdays, or holidays, further strengthening the bond between employees and their organization.</p><h3><strong>Branding and Marketing</strong></h3><p>Corporate gifts provide an opportunity to promote and reinforce a company’s brand. By customizing gifts, such as our grocery gift certificates, with the company logo, colors, or taglines, businesses can increase brand visibility and awareness. When recipients use or display these branded items, it creates a positive association with the company and serves as a promotional tool to reach a wider audience.</p><h3><strong>Celebrations and Special Occasions</strong></h3><p>Corporate gifting is especially valuable during celebrations, holidays, or special occasions. It allows businesses to acknowledge and celebrate important milestones, such as anniversaries, partnerships, or achievements. </p><p>By gifting personalized tokens of appreciation during these moments, companies can strengthen relationships and create memorable experiences that foster goodwill. Our grocery certificates also help encourage employees to use the gift toward food for family get-togethers with their loved ones. </p><p>Corporate gifting serves as a powerful tool for relationship-building, employee engagement, branding, and celebration. It helps companies establish a positive and lasting impression, leading to increased loyalty, referrals, and business opportunities.</p><p>We understand that HR professionals have limited time and resources, which is why we provide a streamlined ordering and delivery process with our gift certificates. Our user-friendly website allows you to browse our catalog of certificates, select the desired gifts for individuals or your whole team, and easily customize them with your company’s branding or personalized messages. We also ensure prompt and reliable delivery to your desired locations, saving you valuable time and effort in the gift procurement process.</p>",
+        "text_alignment": "center"
+      }
+    },
+    "text_with_img_XJBtAB": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "medium",
+        "image": "shopify://shop_images/shutterstock_513248413-e1686022425435.webp",
+        "heading": "<h2>Best Holidays and Celebrations to Give Gifts</h2>",
+        "text": "<p>There are many great times of the year to offer corporate gifts and employee recognition, and Perfect Feast is <strong>an ideal corporate gift year-round. </strong>Some of the most common <a href=\"/pages/using-gift-certificates-as-holiday-promotional-incentives\" title=\"Using Gift Certificates as Holiday Promotional Incentives\">holidays and celebrations</a> for corporate gifts are during the traditional holiday season, including <strong>Thanksgiving, Christmas, Hanukkah, Kwanzaa, and Easter.</strong></p><p>You can also award gift certificates during work holidays and employee commemorations, such as <strong>Employee Appreciation Day, employee birthdays, work anniversaries, and employee promotion celebrations</strong>. All are great reasons to further convey appreciation to your staff and boost their morale throughout the year.</p><p>At Perfect Feast Gift Certificates, we offer <a href=\"/pages/request-a-reminder\" title=\"Request a Reminder\">holiday reminders</a> to help take some of the weight of planning for holiday gifts off of busy HR teams. You can request reminders for each holiday you prefer and even input the specific date you want your reminder to be sent out. Our team will send out email reminders on the specified date to help you stay ahead of schedule and one step ahead.</p>",
+        "button_text": "LEARN MORE",
+        "button_url": "",
+        "reverse_columns": false
+      }
+    },
+    "product_grid_yz6x3C": {
+      "type": "product-grid",
+      "name": "Product Grid",
+      "settings": {
+        "collection": "frontpage",
+        "products_per_row": 3,
+        "products_limit": 12,
+        "show_heading": true,
+        "heading": "Perfect Feast Gift Certificates",
+        "subheading": "<p>Perfect Feast Gift Certificates offers several different <a href=\"/pages/gift-certificates\" title=\"Gift Certificates\">gift certificates</a> options. Our most popular is our Combo Certificate  offering turkey, ham, fruits and vegetables to the recipient. HR managers have found this is the best for employees with dietary restrictions.</p><p>Working with Perfect Feast for your Employee Recognition, Corporate Gifting, Holiday Gifts or any other program is very simple. We pride ourselves on being the best price with the fastest service in the industry.</p>",
+        "show_vendor": false,
+        "show_price": false,
+        "show_product_tags": false,
+        "show_certificate_badge": false,
+        "certificate_text": "Gift Certificate",
+        "show_load_more": false,
+        "show_add_to_cart": true,
+        "variant_label": "Value",
+        "quantity_label": "Quantity",
+        "add_to_cart_text": "Add to Cart",
+        "view_details_text": "View Details",
+        "section_bg_color": "gray-50",
+        "heading_color": "gray-900",
+        "subheading_color": "gray-600",
+        "section_padding": 12
+      }
+    },
+    "icon_text_description_ThgDAC": {
+      "type": "icon-text-description",
+      "custom_css": [
+        ".icon-text_description {padding-top: 32px; padding-bottom: 32px;}"
+      ],
+      "name": "Icon Text Description",
+      "settings": {
+        "heading": "",
+        "description": "<p>We understand the importance of cost-effectiveness for HR professionals. Therefore, we offer competitive pricing on our corporate gift certificates without compromising on quality. Our pricing model ensures that you receive the best value for your investment, allowing you to stretch your budget further. </p><p>With our cost-effective solutions, HR professionals can enhance their employee appreciation initiatives without exceeding their allocated funds.</p>",
+        "text_alignment": "center"
+      }
+    },
+    "text_with_img_7cn3Kh": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "medium",
+        "image": "shopify://shop_images/giftbox.png",
+        "heading": "<h2>Gift With Perfect Feast Today</h2>",
+        "text": "<p>Our corporate gift certificates are a perfect gift for your employees, clients, or partners. They offer unique and invaluable gifts where your clients and employees can choose how and when they want to use them. Don’t miss out on this opportunity to elevate your HR strategies.</p><p>You can also sign up for a holiday reminder with us so gifting your employees and partners is one less thing to worry about during the holiday season.</p><p>Contact Perfect Feast today to learn more about our gift certificate options!</p>",
+        "button_text": "Contact Us",
+        "button_url": "shopify://pages/contact",
+        "reverse_columns": false
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero_with_app_form_HWbtBa",
+    "icon_text_description_fWTfqy",
+    "text_with_img_3kra49",
+    "icon_text_description_9whmCq",
+    "text_with_img_XJBtAB",
+    "product_grid_yz6x3C",
+    "icon_text_description_ThgDAC",
+    "text_with_img_7cn3Kh",
+    "main"
+  ]
+}

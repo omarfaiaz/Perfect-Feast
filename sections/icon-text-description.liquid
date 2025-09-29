@@ -1,0 +1,86 @@
+<div class="icon-text_description">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center md:items-start {% if section.settings.text_alignment == 'center' %}text-center md:text-center{% elsif section.settings.text_alignment == 'right' %}text-right md:text-right{% else %}text-left md:text-left{% endif %} max-w-7xl mx-auto">
+      {% if section.settings.icon_image != blank %}
+        <div class="mb-4 md:mb-0 md:mr-6 flex-shrink-0">
+          <img
+            src="{{ section.settings.icon_image | image_url: width: 100}}"
+            alt="Icon"
+            width="100"
+            height="100"
+            class="w-16 h-16 md:w-20 md:h-20 object-contain mx-auto md:mx-0">
+        </div>
+      {% endif %}
+      <div class="mt-2">
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-800">{{ section.settings.heading }}</h3>
+        <div class="mt-1 text-gray-600">{{ section.settings.description }}</div>
+        <div class="mt-2">
+          {% if section.settings.image != blank %}
+            <img
+              src="{{ section.settings.image | image_url: width: 400 }}"
+              alt="Image"
+              width="400"
+              height="400"
+              class="w-full lg:w-100 h-auto object-contain mx-auto md:mx-0">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Icon Text Description",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "icon_image",
+        "label": "Icon Image"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Add Heading Here"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description",
+        "default": "<p>Add your description here</p>"
+      },
+
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Icon Text Description",
+        "category": "Text"
+      }
+    ]
+
+  }
+{% endschema %}

@@ -1,0 +1,271 @@
+<!-- sections/brand-logos.liquid -->
+{% comment %} 
+                    Brand Logos Section
+                    Features: Responsive logo grid, customizable columns, dynamic blocks 
+{% endcomment %}
+
+{%- liquid
+  assign desktop_columns = section.settings.desktop_columns | default: 6
+
+  case desktop_columns
+    when 3
+      assign desktop_class = 'lg:grid-cols-3'
+    when 4
+      assign desktop_class = 'lg:grid-cols-4'
+    when 5
+      assign desktop_class = 'lg:grid-cols-5'
+    when 6
+      assign desktop_class = 'lg:grid-cols-6'
+    when 7
+      assign desktop_class = 'lg:grid-cols-7'
+    when 8
+      assign desktop_class = 'lg:grid-cols-8'
+    else
+      assign desktop_class = 'lg:grid-cols-6'
+  endcase
+-%}
+
+<section class="py-12 lg:py-16" style="background-color: {{ section.settings.background_color | default: '#F8F9FA' }};">
+  <div class="container mx-auto px-4">
+
+    <!-- Section Header -->
+    {% if section.settings.title != blank or section.settings.description != blank %}
+      <div class="text-center mb-8 lg:mb-12">
+        {% if section.settings.title != blank %}
+          <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            {{ section.settings.description }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Logos Grid -->
+    {% if section.blocks.size > 0 %}
+      <div class="grid grid-cols-2 {{ desktop_class }} gap-6 lg:gap-8 items-center justify-items-center">
+        {% for block in section.blocks %}
+          <div class="logo-item" {{ block.shopify_attributes }}>
+            {% if block.settings.logo != blank %}
+              {% if block.settings.link != blank %}
+                <a
+                  href="{{ block.settings.link }}"
+                  class="block"
+                  {% if block.settings.open_new_tab %}
+                  target="_blank"
+                  rel="noopener"
+                  {% endif %}>
+              {% endif %}
+
+              <div class="flex items-center justify-center h-16 lg:h-20 px-4">
+                {{ block.settings.logo | image_url: width: 200 | image_tag:
+ loading: 'lazy',
+ class: 'max-h-full max-w-full object-contain filter grayscale',
+ alt: block.settings.company_name | default: 'Brand logo'
+                }}
+              </div>
+
+              {% if block.settings.company_name != blank and section.settings.show_company_names %}
+                <p class="text-center text-sm text-gray-600 mt-2 font-medium">
+                  {{ block.settings.company_name }}
+                </p>
+              {% endif %}
+
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            {% else %}
+              <!-- Placeholder for empty logo -->
+              <div class="flex items-center justify-center h-16 lg:h-20 px-4 bg-gray-100 rounded border-2 border-dashed border-gray-300">
+                <span class="text-gray-400 text-sm">Logo</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <!-- Empty state -->
+      <div class="text-center py-12">
+        <div class="max-w-md mx-auto">
+          <div class="mb-4">
+            <svg
+              class="mx-auto h-12 w-12 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">No logos added yet</h3>
+          <p class="text-gray-500">Add brand logos to showcase your partnerships and trusted relationships.</p>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Brand Logos",
+    "tag": "section",
+    "class": "brand-logos-section",
+    "max_blocks": 50,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section title",
+        "default": "Unmatched service from Main Street to Fortune 500"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Section description",
+        "default": "Over 5 million gifts appreciated by companies and HR teams nationwide"
+      },
+      {
+        "type": "header",
+        "content": "Layout Settings"
+      }, {
+        "type": "select",
+        "id": "desktop_columns",
+        "label": "Desktop columns",
+        "options": [
+          {
+            "value": "3",
+            "label": "3 columns"
+          },
+          {
+            "value": "4",
+            "label": "4 columns"
+          },
+          {
+            "value": "5",
+            "label": "5 columns"
+          },
+          {
+            "value": "6",
+            "label": "6 columns"
+          }, {
+            "value": "7",
+            "label": "7 columns"
+          }, {
+            "value": "8",
+            "label": "8 columns"
+          }
+        ],
+        "default": "6",
+        "info": "Number of logos per row on desktop. Mobile is always 2 columns."
+      }, {
+        "type": "checkbox",
+        "id": "show_company_names",
+        "label": "Show company names below logos",
+        "default": false
+      }, {
+        "type": "header",
+        "content": "Styling"
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#F8F9FA"
+      }, {
+        "type": "header",
+        "content": "Section Settings"
+      }, {
+        "type": "text",
+        "id": "section_id",
+        "label": "Section ID",
+        "info": "Optional: Add a custom ID for this section"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo",
+        "name": "Brand Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo image",
+            "info": "Recommended size: 200x100px or similar aspect ratio"
+          }, {
+            "type": "text",
+            "id": "company_name",
+            "label": "Company name",
+            "info": "Will be used for alt text and can display below logo if enabled"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link URL",
+            "info": "Optional: Make the logo clickable"
+          }, {
+            "type": "checkbox",
+            "id": "open_new_tab",
+            "label": "Open link in new tab",
+            "default": true
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Brand Logos",
+        "blocks": [
+          {
+            "type": "logo",
+            "settings": {
+              "company_name": "Advocate Aurora"
+            }
+          },
+          {
+            "type": "logo",
+            "settings": {
+              "company_name": "AVI Food Systems"
+            }
+          },
+          {
+            "type": "logo",
+            "settings": {
+              "company_name": "Holiday Inn"
+            }
+          },
+          {
+            "type": "logo",
+            "settings": {
+              "company_name": "Sanford Health"
+            }
+          }, {
+            "type": "logo",
+            "settings": {
+              "company_name": "Apex Advertising"
+            }
+          }, {
+            "type": "logo",
+            "settings": {
+              "company_name": "Harbor Distributing"
+            }
+          }
+        ],
+        "settings": {
+          "title": "Unmatched service from Main Street to Fortune 500",
+          "description": "Over 5 million gifts appreciated by companies and HR teams nationwide",
+          "desktop_columns": "6",
+        }
+      }
+    ]
+  }
+{% endschema %}

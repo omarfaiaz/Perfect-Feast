@@ -1,0 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner-hero": {
+      "type": "banner-img",
+      "settings": {
+        "banner_image": "shopify://shop_images/title-4.jpg",
+        "bg_color": "#ed2129",
+        "section_height": 240,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.1,
+        "overlay_text": "",
+        "subtext": "",
+        "button_text": "",
+        "button_link": "/"
+      }
+    },
+    "faq_tab_X3zwkR": {
+      "type": "faq-tab",
+      "blocks": {
+        "tab_qX7dQb": {
+          "type": "tab",
+          "settings": {
+            "tab_ref": "for-givers",
+            "faq_page_url": ""
+          }
+        },
+        "tab_rwXFGF": {
+          "type": "tab",
+          "settings": {
+            "tab_ref": "for-recipients",
+            "faq_page_url": "shopify://pages/gift-card-recipients"
+          }
+        },
+        "tab_yUMGfW": {
+          "type": "tab",
+          "settings": {
+            "tab_ref": "store-managers",
+            "faq_page_url": "shopify://pages/gift-card-retailers"
+          }
+        }
+      },
+      "block_order": [
+        "tab_qX7dQb",
+        "tab_rwXFGF",
+        "tab_yUMGfW"
+      ],
+      "name": "Tabbed FAQs",
+      "settings": {
+        "aria_label": "<h1>Frequently asked questions</h1>",
+        "active_tab_handle": "for-givers"
+      }
+    }
+  },
+  "order": [
+    "banner-hero",
+    "faq_tab_X3zwkR"
+  ]
+}

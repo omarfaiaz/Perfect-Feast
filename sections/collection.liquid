@@ -1,0 +1,278 @@
+{% comment %} 
+      Collection template using product card snippet and Tailwind CSS
+      A clean, simple version without filtering or sorting 
+{% endcomment %}
+
+<div class="bg-gray-50 py-8 md:py-12">
+  <div class="container mx-auto px-4">
+    <!-- Collection Header -->
+    <div class="max-w-5xl mx-auto mb-8 md:mb-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-center">
+        <div class="mb-6 md:mb-0 md:mr-6">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ collection.title }}</h1>
+          {% if collection.description != blank %}
+            <div class="text-gray-600 prose max-w-3xl">
+              {{ collection.description }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    {% paginate collection.products by section.settings.products_per_page %}
+      <div id="collection-products-{{ section.id }}" class="grid grid-cols-1 {% if section.settings.products_per_row == 2 %}md:grid-cols-2{% elsif section.settings.products_per_row == 3 %}md:grid-cols-2 lg:grid-cols-3{% elsif section.settings.products_per_row == 4 %}md:grid-cols-2 lg:grid-cols-4{% else %}md:grid-cols-2 lg:grid-cols-3{% endif %} gap-6">
+
+        {% for product in collection.products %}
+          {% render 'product-card'
+            , 
+ product: product
+            ,
+ show_vendor: section.settings.show_vendor
+            ,
+ show_price: section.settings.show_price
+            ,
+ show_tags: section.settings.show_tags
+            ,
+ show_certificate_badge: section.settings.show_certificate_badge
+            ,
+ certificate_text: section.settings.certificate_text
+            ,
+ show_add_to_cart: section.settings.show_add_to_cart
+            ,
+ variant_label: section.settings.variant_label
+            ,
+ quantity_label: section.settings.quantity_label
+            ,
+ add_to_cart_text: section.settings.add_to_cart_text
+            ,
+ view_details_text: section.settings.view_details_text
+            ,
+ section_id: section.id
+          %}
+          {% else %}
+          <!-- No Products Message -->
+          <div class="col-span-full text-center py-12">
+            <div class="max-w-md mx-auto">
+              <svg
+                class="mx-auto h-12 w-12 text-gray-400 mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+              <h3 class="text-xl font-semibold text-gray-600 mb-2">No products found</h3>
+              <p class="text-gray-500">{{ section.settings.no_products_message }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      {% if paginate.pages > 1 %}
+        <div class="flex justify-center mt-12">
+          <nav class="flex items-center space-x-2" aria-label="Pagination">
+            {% if paginate.previous %}
+              <a href="{{ paginate.previous.url }}" class="inline-flex items-center px-4 py-2 text-sm font-medium bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7" />
+                </svg>
+                Previous
+              </a>
+            {% else %}
+              <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border border-gray-300 rounded-md cursor-not-allowed">
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7" />
+                </svg>
+                Previous
+              </span>
+            {% endif %}
+
+            <!-- Page Numbers -->
+            <div class="hidden md:flex space-x-2">
+              {% for part in paginate.parts %}
+                {% if part.is_link %}
+                  <a href="{{ part.url }}" class="inline-flex items-center px-4 py-2 text-sm font-medium bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                    {{ part.title }}
+                  </a>
+                {% else %}
+                  {% if part.title == paginate.current_page %}
+                    <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brandPrimary border border-brandPrimary rounded-md">
+                      {{ part.title }}
+                    </span>
+                  {% else %}
+                    <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md">
+                      {{ part.title }}
+                    </span>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <!-- Current Page / Total (Mobile) -->
+            <span class="md:hidden px-4 py-2 text-sm font-medium text-gray-700">
+              {{ paginate.current_page }} / {{ paginate.pages }}
+            </span>
+
+            {% if paginate.next %}
+              <a href="{{ paginate.next.url }}" class="inline-flex items-center px-4 py-2 text-sm font-medium bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                Next
+                <svg
+                  class="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            {% else %}
+              <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border border-gray-300 rounded-md cursor-not-allowed">
+                Next
+                <svg
+                  class="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            {% endif %}
+          </nav>
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:general.collection",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Layout Settings"
+      },
+      {
+        "type": "select",
+        "id": "products_per_row",
+        "label": "Products per row",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          }, {
+            "value": "3",
+            "label": "3"
+          }, {
+            "value": "4",
+            "label": "4"
+          }
+        ],
+        "default": "3"
+      },
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "min": 4,
+        "max": 48,
+        "step": 4,
+        "label": "Products per page",
+        "default": 12
+      },
+      {
+        "type": "header",
+        "content": "Product Display"
+      }, {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendor",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "show_price",
+        "label": "Show product price",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show product tags",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "show_certificate_badge",
+        "label": "Show certificate badge (if applicable)",
+        "default": false
+      }, {
+        "type": "text",
+        "id": "certificate_text",
+        "label": "Certificate badge text",
+        "default": "Gift Certificate"
+      }, {
+        "type": "checkbox",
+        "id": "show_add_to_cart",
+        "label": "Show add to cart button",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "Button & Label Text"
+      }, {
+        "type": "text",
+        "id": "variant_label",
+        "label": "Variant selector label",
+        "default": "Options"
+      }, {
+        "type": "text",
+        "id": "quantity_label",
+        "label": "Quantity selector label",
+        "default": "Quantity"
+      }, {
+        "type": "text",
+        "id": "add_to_cart_text",
+        "label": "Add to cart button text",
+        "default": "Add to Cart"
+      }, {
+        "type": "text",
+        "id": "view_details_text",
+        "label": "View details link text",
+        "default": "View Details"
+      }, {
+        "type": "header",
+        "content": "Empty Collection"
+      }, {
+        "type": "text",
+        "id": "no_products_message",
+        "label": "No products message",
+        "default": "Please check back later or browse our other collections."
+      }
+    ]
+  }
+{% endschema %}

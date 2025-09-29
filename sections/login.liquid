@@ -1,0 +1,185 @@
+{% comment %} 
+        Login section — no Alpine, external JS toggle in assets/login-toggle.js
+{% endcomment %}
+
+<section class="py-16 bg-gray-50 min-h-[60vh]">
+  <div class="container mx-auto px-4">
+    <div class="max-w-xl mx-auto">
+      <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-gray-900">
+          {{ section.settings.heading | default: "Sign in to your account" }}
+        </h3>
+        {% if section.settings.subheading != blank %}
+          <p class="text-gray-600 mt-2">{{ section.settings.subheading }}</p>
+        {% endif %}
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md p-8">
+        <!-- Login view -->
+        <div class="login-view">
+          {% form 'customer_login' %}
+            {% if form.errors %}
+              <div class="mb-6 p-4 bg-red-50 border border-red-100 text-red-700 rounded">
+                <strong class="block mb-1">There was a problem</strong>
+                <ul class="list-disc pl-5">
+                  {% for field in form.errors %}
+                    <li>{{ field }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            <div class="space-y-4">
+              <label class="block">
+                <span class="text-sm font-medium text-gray-700">Email</span>
+                <input
+                  name="customer[email]"
+                  type="email"
+                  required
+                  autofocus
+                  value="{{ form.email | default: '' }}"
+                  class="mt-2 w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandPrimary"
+                  placeholder="you@example.com" />
+              </label>
+
+              {% if form.password_needed %}
+                <label class="block">
+                  <span class="text-sm font-medium text-gray-700">Password</span>
+                  <input
+                    name="customer[password]"
+                    type="password"
+                    required
+                    class="mt-2 w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandPrimary"
+                    placeholder="Password" />
+                </label>
+              {% endif %}
+
+              <div class="flex items-center justify-between text-sm text-gray-600">
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="remember"
+                    class="w-4 h-4 rounded border-gray-300" />
+                  <span>Remember me</span>
+                </label>
+
+                <button
+                  id="forgot-password-btn"
+                  type="button"
+                  class="text-brandPrimary cursor-pointer hover:underline">
+                  Forgot your password?
+                </button>
+              </div>
+
+              <button type="submit" class="w-full py-3 bg-brandPrimary text-white font-bold rounded-lg hover:opacity-95 transition">
+                Sign In
+              </button>
+
+              <p class="text-center text-sm text-gray-600">
+                New customer?
+                <a href="{{ routes.account_register_url }}" class="text-brandPrimary font-medium hover:underline">Create an account</a>
+              </p>
+            </div>
+          {% endform %}
+        </div>
+
+        <!-- Recover view (hidden by default) -->
+        <div class="recover-view">
+          {% form 'recover_customer_password' %}
+            {% if form.errors %}
+              <div class="mb-6 p-4 bg-red-50 border border-red-100 text-red-700 rounded">
+                <strong class="block mb-1">There was a problem</strong>
+                <p class="text-sm">{{ form.errors | default_errors }}</p>
+              </div>
+            {% endif %}
+
+            {% if form.posted_successfully %}
+              <div class="mb-6 p-4 bg-green-50 border border-green-100 text-green-700 rounded">
+                If an account exists with that email, instructions have been sent.
+              </div>
+            {% endif %}
+
+            <div class="space-y-4">
+              <label class="block">
+                <span class="text-sm font-medium text-gray-700">Email</span>
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  class="mt-2 w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandPrimary"
+                  placeholder="you@example.com" />
+              </label>
+
+              <div class="flex gap-3">
+                <button type="submit" class="btn btn--primary">
+                  Recover password
+                </button>
+                <button
+                  id="back-to-login-btn"
+                  type="button"
+                  class="btn btn--tertiary">
+                  Back to login
+                </button>
+              </div>
+            </div>
+          {% endform %}
+        </div>
+
+        <!-- Guest login (optional) -->
+        {% if shop.checkout.guest_login %}
+          <div class="mt-8 border-t pt-8">
+            <h3 class="text-center text-lg font-semibold text-gray-700 mb-4">Continue as Guest</h3>
+            {% form 'guest_login' %}
+              <div class="flex gap-3">
+                <button type="submit" class="w-full py-3 bg-gray-800 text-white font-medium rounded-lg hover:opacity-95 transition">
+                  Continue as Guest
+                </button>
+              </div>
+            {% endform %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} 
+      Inline flags set server-side so external JS can decide initial view. 
+{%- endcomment -%}
+
+
+{% form 'customer_login' %}
+  {% if form.errors %}
+    <script>
+      window.__pf_show_login = true;
+    </script>
+  {% else %}
+    <script>
+      window.__pf_show_login = false;
+    </script>
+  {% endif %}
+{% endform %}
+
+
+{% schema %}
+  {
+    "name": "Login",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Sign in to your account"
+      }, {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Login"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "banner-img",
+      "settings": {
+        "banner_image": "{{ product.metafields.custom.banner_image.value }}",
+        "bg_color": "#ed2129",
+        "section_height": 420,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.1,
+        "overlay_text": "",
+        "subtext": "",
+        "button_text": "",
+        "button_link": "/"
+      }
+    },
+    "title_text": {
+      "type": "title-text",
+      "settings": {
+        "title": "<h1>{{ product.title }}</h1>",
+        "text": "{{ product.description }}"
+      }
+    },
+    "main": {
+      "type": "product",
+      "settings": {
+        "button_one_url": "https://cdn.shopify.com/s/files/1/0769/3339/8774/files/orderform.pdf?v=1758808462",
+        "button_two_url": "https://cdn.shopify.com/s/files/1/0769/3339/8774/files/PFR-W9.pdf?v=1758808458"
+      }
+    }
+  },
+  "order": ["banner", "title_text", "main"]
+}

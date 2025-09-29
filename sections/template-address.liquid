@@ -1,0 +1,455 @@
+{% comment %} 
+            Customer addresses section — matches PerfectFeast styles. 
+{% endcomment %}
+
+<div class="max-w-6xl mx-auto px-4 py-12">
+  <div class="flex flex-col md:flex-row items-center justify-between my-5 gap-4">
+    <h1 class="text-2xl font-bold text-gray-700">Addresses</h1>
+
+    <div class="flex gap-3">
+      <button
+        id="new-address-btn"
+        type="button"
+        class="px-6 py-2 text-white bg-brandPrimary rounded-md shadow">Create new address</button>
+      <a href="{{ routes.account_url }}" class="text-brandPrimary font-medium underline">Back to account</a>
+    </div>
+  </div>
+
+  <!-- New address modal -->
+  <div id="new-address-modal" class="hidden fixed inset-0 z-50 flex items-start justify-center pt-20 px-4">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="relative w-full max-w-md bg-white rounded-lg shadow-lg p-6 z-10 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-medium">New address</h2>
+        <button
+          type="button"
+          id="close-new-address"
+          class="text-gray-500 text-xl leading-none">&times;</button>
+      </div>
+
+      {% form 'customer_address'
+        , customer.new_address %}
+        <div class="space-y-3">
+          <div>
+            <label class="text-xs text-gray-700">First name</label>
+            <input
+              name="address[first_name]"
+              type="text"
+              value="{{ form.first_name }}"
+              class="w-full mt-1 px-3 py-2 border rounded" />
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">Last name</label>
+            <input
+              name="address[last_name]"
+              type="text"
+              value="{{ form.last_name }}"
+              class="w-full mt-1 px-3 py-2 border rounded" />
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">Company</label>
+            <input
+              name="address[company]"
+              type="text"
+              value="{{ form.company }}"
+              class="w-full mt-1 px-3 py-2 border rounded" />
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">Address 1</label>
+            <input
+              name="address[address1]"
+              type="text"
+              value="{{ form.address1 }}"
+              class="w-full mt-1 px-3 py-2 border rounded" />
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">Address 2</label>
+            <input
+              name="address[address2]"
+              type="text"
+              value="{{ form.address2 }}"
+              class="w-full mt-1 px-3 py-2 border rounded" />
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">City</label>
+            <input
+              name="address[city]"
+              type="text"
+              value="{{ form.city }}"
+              class="w-full mt-1 px-3 py-2 border rounded" />
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">Country</label>
+            <select
+              name="address[country]"
+              id="address_country_new"
+              value="{{ form.country }}"
+              class="w-full mt-1 px-3 py-2 border rounded"
+              data-country-selector
+              data-id="new">
+              {{ all_country_option_tags }}
+            </select>
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">Province</label>
+            <select
+              name="address[province]"
+              id="address_province_new"
+              value="{{ form.province }}"
+              class="w-full mt-1 px-3 py-2 border rounded"></select>
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">Postal / ZIP</label>
+            <input
+              name="address[zip]"
+              type="text"
+              value="{{ form.zip }}"
+              class="w-full mt-1 px-3 py-2 border rounded" />
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-700">Phone</label>
+            <input
+              name="address[phone]"
+              type="tel"
+              value="{{ form.phone }}"
+              class="w-full mt-1 px-3 py-2 border rounded" />
+          </div>
+
+          <div class="flex items-center gap-2">
+            {{ form.set_as_default_checkbox }}
+            <label class="text-sm text-gray-700">Set as default address</label>
+          </div>
+
+          <div class="flex gap-3">
+            <button type="submit" class="flex-1 px-4 py-2 bg-brandPrimary text-white rounded">Create address</button>
+            <button
+              type="button"
+              id="cancel-new-address"
+              class="flex-1 px-4 py-2 border rounded">Cancel</button>
+          </div>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+
+  <!-- Addresses grid -->
+  <div class="mt-8">
+    {% paginate customer.addresses by 10 %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+        {% for address in customer.addresses %}
+          <div class="relative border rounded-lg p-4 bg-white {% if address == customer.default_address %} pt-10 {% endif %}">
+            {% if address == customer.default_address %}
+              <span class="absolute top-3 left-3 bg-green-700 text-white text-xs px-2 py-1 rounded">Default</span>
+            {% endif %}
+
+            <div class="min-h-[120px]">
+              {{ address | format_address }}
+            </div>
+
+            <div class="mt-4 flex gap-2">
+              <button
+                type="button"
+                class="edit-address-btn flex-1 px-3 py-2 bg-brandPrimary text-white rounded"
+                data-address-id="{{ address.id }}">Edit</button>
+              <button
+                type="button"
+                class="delete-address-btn flex-1 px-3 py-2 border rounded text-gray-700"
+                data-url="{{ address.url }}">Delete</button>
+
+              <form
+                method="post"
+                action="{{ address.url }}"
+                class="hidden delete-address-form">
+                <input
+                  type="hidden"
+                  name="_method"
+                  value="delete" />
+              </form>
+            </div>
+
+            <!-- Edit modal per address -->
+            <div id="edit-address-{{ address.id }}" class="edit-address-modal hidden fixed inset-0 z-50 flex items-start justify-center pt-20 px-4">
+              <div class="absolute inset-0 bg-black opacity-40"></div>
+              <div class="relative w-full max-w-md bg-white rounded-lg shadow-lg p-6 z-10 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="text-lg font-medium">Edit address</h3>
+                  <button
+                    type="button"
+                    class="close-edit-address text-gray-500 text-xl leading-none"
+                    data-address-id="{{ address.id }}">&times;</button>
+                </div>
+
+                {% form 'customer_address'
+                  , address %}
+                  <div class="space-y-3">
+                    <div>
+                      <label class="text-xs text-gray-700">First name</label>
+                      <input
+                        name="address[first_name]"
+                        type="text"
+                        value="{{ form.first_name }}"
+                        class="w-full mt-1 px-3 py-2 border rounded" />
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">Last name</label>
+                      <input
+                        name="address[last_name]"
+                        type="text"
+                        value="{{ form.last_name }}"
+                        class="w-full mt-1 px-3 py-2 border rounded" />
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">Company</label>
+                      <input
+                        name="address[company]"
+                        type="text"
+                        value="{{ form.company }}"
+                        class="w-full mt-1 px-3 py-2 border rounded" />
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">Address 1</label>
+                      <input
+                        name="address[address1]"
+                        type="text"
+                        value="{{ form.address1 }}"
+                        class="w-full mt-1 px-3 py-2 border rounded" />
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">Address 2</label>
+                      <input
+                        name="address[address2]"
+                        type="text"
+                        value="{{ form.address2 }}"
+                        class="w-full mt-1 px-3 py-2 border rounded" />
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">City</label>
+                      <input
+                        name="address[city]"
+                        type="text"
+                        value="{{ form.city }}"
+                        class="w-full mt-1 px-3 py-2 border rounded" />
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">Country</label>
+                      <select
+                        name="address[country]"
+                        id="address_country_{{ address.id }}"
+                        value="{{ form.country }}"
+                        class="w-full mt-1 px-3 py-2 border rounded"
+                        data-country-selector
+                        data-id="{{ address.id }}">
+                        {{ all_country_option_tags }}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">Province</label>
+                      <select
+                        name="address[province]"
+                        id="address_province_{{ address.id }}"
+                        value="{{ form.province }}"
+                        class="w-full mt-1 px-3 py-2 border rounded"></select>
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">Postal / ZIP</label>
+                      <input
+                        name="address[zip]"
+                        type="text"
+                        value="{{ form.zip }}"
+                        class="w-full mt-1 px-3 py-2 border rounded" />
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-700">Phone</label>
+                      <input
+                        name="address[phone]"
+                        type="tel"
+                        value="{{ form.phone }}"
+                        class="w-full mt-1 px-3 py-2 border rounded" />
+                    </div>
+
+                    <div class="flex gap-3">
+                      <button type="submit" class="flex-1 px-4 py-2 bg-brandPrimary text-white rounded">Save</button>
+                      <button
+                        type="button"
+                        class="flex-1 px-4 py-2 border rounded close-edit-address"
+                        data-address-id="{{ address.id }}">Cancel</button>
+                    </div>
+                  </div>
+                {% endform %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="mt-6">
+        {% render 'pagination'
+          , pagination: paginate %}
+      </div>
+    {% endpaginate %}
+  </div>
+</div>
+
+<script>
+  (function(){
+    'use strict';
+  
+    function populateProvince(select) {
+      var selectedCountryOption = null;
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === select.getAttribute('value')) {
+          selectedCountryOption = select.options[i];
+          selectedCountryOption.setAttribute('selected','selected');
+          break;
+        }
+      }
+      if (!selectedCountryOption) selectedCountryOption = select.options[select.selectedIndex];
+  
+      if (!selectedCountryOption) return;
+  
+      try {
+        var provincesData = selectedCountryOption.dataset.provinces || selectedCountryOption.getAttribute('data-provinces') || '[]';
+        var provinces = JSON.parse(provincesData);
+      } catch (e) {
+        var provinces = [];
+      }
+  
+      var id = select.dataset.id;
+      var provinceSelector = document.querySelector('#address_province_' + id);
+      if (!provinceSelector) return;
+  
+      if (!provinces || provinces.length === 0) {
+        provinceSelector.setAttribute('disabled','disabled');
+        provinceSelector.innerHTML = '';
+        return;
+      }
+  
+      provinceSelector.removeAttribute('disabled');
+      var options = '';
+      for (var j = 0; j < provinces.length; j++) {
+        var value = provinces[j][0];
+        var label = provinces[j][0];
+        var selected = '';
+        if (provinceSelector.getAttribute('value') === value) selected = ' selected';
+        options += '<option value="'+ value +'"'+ selected +'>'+ label +'</option>';
+      }
+      provinceSelector.innerHTML = options;
+    }
+  
+    function initCountryProvince() {
+      var all = document.querySelectorAll('select[data-country-selector]');
+      if (!all || all.length === 0) return;
+      for (var i = 0; i < all.length; i++) {
+        populateProvince(all[i]);
+        (function(sel){
+          sel.addEventListener('change', function(){
+            populateProvince(this);
+          });
+        })(all[i]);
+      }
+    }
+  
+    function bindUI() {
+      var newBtn = document.getElementById('new-address-btn');
+      var newModal = document.getElementById('new-address-modal');
+      var closeNew = document.getElementById('close-new-address');
+      var cancelNew = document.getElementById('cancel-new-address');
+  
+      function open(el){ if(el) el.classList.remove('hidden'); }
+      function close(el){ if(el) el.classList.add('hidden'); }
+  
+      if (newBtn) newBtn.addEventListener('click', function(){ open(newModal); });
+      if (closeNew) closeNew.addEventListener('click', function(){ close(newModal); });
+      if (cancelNew) cancelNew.addEventListener('click', function(){ close(newModal); });
+  
+      // edit buttons
+      var editBtns = document.querySelectorAll('.edit-address-btn');
+      editBtns.forEach(function(btn){
+        var id = btn.dataset.addressId;
+        btn.addEventListener('click', function(){
+          var modal = document.getElementById('edit-address-' + id);
+          if (modal) modal.classList.remove('hidden');
+          // populate provinces for this modal (in case)
+          var countrySelect = document.querySelector('#address_country_' + id);
+          if (countrySelect) populateProvince(countrySelect);
+        });
+      });
+  
+      // close edit modals
+      var closeEditBtns = document.querySelectorAll('.close-edit-address');
+      closeEditBtns.forEach(function(btn){
+        var id = btn.dataset.addressId;
+        btn.addEventListener('click', function(){
+          var modal = document.getElementById('edit-address-' + id);
+          if (modal) modal.classList.add('hidden');
+        });
+      });
+  
+      // delete buttons
+      var deleteBtns = document.querySelectorAll('.delete-address-btn');
+      deleteBtns.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var url = this.dataset.url;
+          if (confirm('Do you really wish to delete this address?')) {
+            // submit the hidden form next to the card
+            var form = this.parentElement.querySelector('form.delete-address-form');
+            if (form) {
+              form.action = url;
+              form.submit();
+            } else {
+              // fallback find by action
+              var f = document.querySelector('form[action="'+ url +'"]');
+              if (f) f.submit();
+            }
+          }
+        });
+      });
+    }
+  
+    // prefer jQuery ready if available
+    if (window.jQuery) {
+      (function($){
+        $(function(){
+          initCountryProvince();
+          bindUI();
+        });
+      })(jQuery);
+    } else {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function(){
+          initCountryProvince();
+          bindUI();
+        });
+      } else {
+        initCountryProvince();
+        bindUI();
+      }
+    }
+  })();
+</script>
+
+
+{% schema %}
+  {
+    "name": "Order Template",
+    "settings": []
+  }
+{% endschema %}

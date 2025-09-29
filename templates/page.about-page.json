@@ -1,0 +1,132 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner_img_BhYDaG": {
+      "type": "banner-img",
+      "name": "Banner Image",
+      "settings": {
+        "banner_image": "shopify://shop_images/about-banner.webp",
+        "bg_color": "#ed2129",
+        "section_height": 640,
+        "overlay_color": "#ffffff",
+        "overlay_opacity": 0.1,
+        "overlay_text": "",
+        "subtext": "",
+        "button_text": "",
+        "button_link": "/"
+      }
+    },
+    "title_text_DwcTrT": {
+      "type": "title-text",
+      "name": "Title with Text",
+      "settings": {
+        "title": "<h1>About PFR Corporate Gifts</h1>",
+        "text": "<p>PFR Corporate Gifts LLC specializes in gift certificates as holiday gifts for employees and customers and as promotional incentives. We offer turkey, ham, combination turkey-or-ham, and beef steaks gift certificates that are accepted in supermarkets throughout the USA.</p>"
+      }
+    },
+    "text_with_img_NERTei": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "small",
+        "image": "shopify://shop_images/about-1.webp",
+        "heading": "",
+        "text": "<p><strong>PFR Corporate Gifts LLC</strong> is led by<br/><strong>Paul F. Reed, president</strong><br/>(whose marketing management career includes Brand Manager at Procter & Gamble, Senior Product Manager at Sara Lee, and Director of Marketing at Norbest, Inc.),</p><p><strong>Jason D. Taylor, VP & general manager, and<br/>Andrew L. Reed, VP of Sales.</strong></p>",
+        "button_text": "",
+        "button_url": "",
+        "reverse_columns": false
+      }
+    },
+    "text_with_img_nU9XEc": {
+      "type": "text-with-img",
+      "name": "Text with Image",
+      "settings": {
+        "section_spacing": "small",
+        "image": "shopify://shop_images/about-2.webp",
+        "heading": "",
+        "text": "<p>Paul managed the Norbest gift certificates program for over <strong>19 years </strong>at Norbest, Inc. until 2006. For the next three years PFR Corporate Gifts, Inc. was the exclusive agent for Norbest® gift certificates. In April 2009, the relationship with Norbest was discontinued, allowing us to offer considerably superior service to our customers using our own gift certificates. Since then our certificates have come to be gladly accepted by virtually all supermarkets in the USA.<br/><br/></p>",
+        "button_text": "",
+        "button_url": "",
+        "reverse_columns": true
+      }
+    },
+    "link_box_jkwN8N": {
+      "type": "link-box",
+      "blocks": {
+        "box_K8DMRa": {
+          "type": "box",
+          "settings": {
+            "title": "PFR Corporate Gifts VS Norbest",
+            "link": "shopify://blogs/resources/perfect-feast-vs-norbest"
+          }
+        },
+        "box_MATnmT": {
+          "type": "box",
+          "settings": {
+            "title": "PFR Corporate Gifts VS Butterball",
+            "link": "/"
+          }
+        },
+        "box_PgmxwF": {
+          "type": "box",
+          "settings": {
+            "title": "Our Gift Certificates VS Giving actual Turkeys or Hams",
+            "link": "shopify://blogs/resources/perfect-feast-vs-turkeys-or-hams"
+          }
+        },
+        "box_mrgXKB": {
+          "type": "box",
+          "settings": {
+            "title": "Our Gift Certificates VS Retailer Gift Cards",
+            "link": "shopify://blogs/resources/are-turkey-or-ham-gift-certificates-better-than-retailer-gift-cards"
+          }
+        }
+      },
+      "block_order": [
+        "box_K8DMRa",
+        "box_MATnmT",
+        "box_PgmxwF",
+        "box_mrgXKB"
+      ],
+      "name": "Link Boxes",
+      "settings": {
+        "bg_image": "shopify://shop_images/about-bg.webp"
+      }
+    },
+    "testimonial_slide_9hHPpj": {
+      "type": "testimonial-slide",
+      "blocks": {
+        "testimonial_fAPc7q": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "This went very well from the employees perspective and was very easy to do from the employer perspective. I have also forwarded this to my husband and a few other friends who own business’as this is an affordable way to give at holiday time. Thanks,",
+            "author": "BARB"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_fAPc7q"
+      ],
+      "name": "Testimonial Slide",
+      "settings": {
+        "heading": "What our customers are saying"
+      }
+    }
+  },
+  "order": [
+    "banner_img_BhYDaG",
+    "title_text_DwcTrT",
+    "text_with_img_NERTei",
+    "text_with_img_nU9XEc",
+    "link_box_jkwN8N",
+    "testimonial_slide_9hHPpj"
+  ]
+}

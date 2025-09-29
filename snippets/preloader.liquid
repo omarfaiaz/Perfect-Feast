@@ -1,0 +1,113 @@
+<div class="pfr-preloader">
+  <div class="pfr-preloader_inner">
+    <img
+      src="{{'icon-1.webp' | asset_url  }}"
+      alt="red turkey icon"
+      width="50"
+      height="50">
+    <img
+      src="{{'icon-2.webp' | asset_url  }}"
+      alt="red ham icon"
+      width="50"
+      height="50">
+    <img
+      src="{{'icon-5.webp' | asset_url  }}"
+      alt="red steak icon"
+      width="50"
+      height="50">
+  </div>
+</div>
+
+<style>
+  .pfr-preloader {
+    background: rgba(255, 255, 255, 0.99);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+  }
+  .pfr-preloader .pfr-preloader_inner {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  .pfr-preloader .pfr-preloader_inner img {
+    width: 25%;
+    height: auto;
+  }
+  .pfr-preloader .pfr-preloader_inner img:nth-child(1) {
+    -webkit-animation: loader1 1.0s infinite linear;
+    animation: loader1 1.0s infinite linear;
+  }
+  .pfr-preloader .pfr-preloader_inner img:nth-child(2) {
+    -webkit-animation: loader1 1.0s infinite linear;
+    animation: loader1 1.0s infinite linear;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+  }
+  .pfr-preloader .pfr-preloader_inner img:nth-child(3) {
+    -webkit-animation: loader1 1.0s infinite linear;
+    animation: loader1 1.0s infinite linear;
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+  @keyframes loader1 {
+    0% {
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(1.5);
+      -moz-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+      -o-transform: scale(1.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+    }
+  }
+  @-webkit-keyframes loader1 {
+    0% {
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(1.5);
+      -moz-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+      -o-transform: scale(1.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+    }
+  }
+</style>

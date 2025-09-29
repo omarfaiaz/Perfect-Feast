@@ -1,0 +1,126 @@
+<!-- sections/testimonials-grid.liquid -->
+
+<section class="py-12 testimonial-grid" style="background-color: {{ section.settings.background_color }}">
+  <div class="container mx-auto px-4">
+    {% if section.settings.heading != blank %}
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold mb-3">
+          {{ section.settings.heading }}
+        </h2>
+        {% if section.settings.subheading != blank %}
+          <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+            {{ section.settings.subheading }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for block in section.blocks %}
+        <div class="testimonial-card bg-white p-6 rounded-lg shadow-sm mb-4" {{ block.shopify_attributes }}>
+          <div class="quote-icon text-brandPrimary text-4xl mb-3">
+            <span aria-hidden="true">{% render 'quote-icon' %}</span>
+          </div>
+
+          <div class="testimonial-content text-gray-700 mb-4">
+            {{ block.settings.quote }}
+          </div>
+
+          <div class="testimonial-author text-gray-900 font-medium">
+            -{{ block.settings.author }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Testimonial Grid",
+    "tag": "section",
+    "class": "testimonial-grid-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "What Our Customers Say"
+      }, {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Read real testimonials from satisfied customers"
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#f9fafb"
+      }, {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid"
+          }, {
+            "value": "staggered",
+            "label": "Staggered"
+          }
+        ],
+        "default": "grid"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Quote",
+            "default": "<p>Add your testimonial here</p>"
+          }, {
+            "type": "text",
+            "id": "author",
+            "label": "Author name",
+            "default": "Jon"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonial Grid",
+        "blocks": [
+          {
+            "type": "testimonial",
+            "settings": {
+              "quote": "<p>Once again we are overwhelmed by your great customer service. I hope you are seeing many of your customers click with you like we have. Thank you and have a great holiday season.</p>",
+              "author": "Jon"
+            }
+          }, {
+            "type": "testimonial",
+            "settings": {
+              "quote": "<p>You are GREAT! Thanks!</p>",
+              "author": "Corine"
+            }
+          }, {
+            "type": "testimonial",
+            "settings": {
+              "quote": "<p>WOW, you guys are efficient! Thank you for processing them so quickly!</p>",
+              "author": "Rene"
+            }
+          }, {
+            "type": "testimonial",
+            "settings": {
+              "quote": "<p>I just received your PerfectFeast overnight delivery. PFE Corporate Gifts provides exemplary customer service. Yes, you can quote me on that! Thanks Paul</p>",
+              "author": "Mike"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

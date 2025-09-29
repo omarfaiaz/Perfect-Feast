@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner-hero": {
+      "type": "banner-img",
+      "settings": {
+        "bg_color": "#ed2129",
+        "section_height": 240,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.1,
+        "overlay_text": "{{ page.title }}",
+        "button_text": "",
+        "button_link": "/"
+      }
+    },
+    "main": {
+      "type": "page",
+      "settings": {}
+    }
+  },
+  "order": ["banner-hero", "main"]
+}

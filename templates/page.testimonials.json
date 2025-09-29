@@ -1,0 +1,146 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner-hero": {
+      "type": "banner-img",
+      "settings": {
+        "bg_color": "#ed2129",
+        "section_height": 340,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.1,
+        "overlay_text": "{{ page.title }}",
+        "subtext": "",
+        "button_text": "",
+        "button_link": "/"
+      }
+    },
+    "testimonial_grid_8GTLfe": {
+      "type": "testimonial-grid",
+      "blocks": {
+        "testimonial_Fy8kMe": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Once again we are overwhelmed by your great customer service. I hope you are seeing many of your customers click with you like we have. Thank you and have a great holiday season.</p>",
+            "author": "Jon"
+          }
+        },
+        "testimonial_976DEh": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>You are GREAT! Thanks!</p>",
+            "author": "Corine"
+          }
+        },
+        "testimonial_cBKT9A": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>WOW, you guys are efficient! Thank you for processing them so quickly!</p>",
+            "author": "Rene"
+          }
+        },
+        "testimonial_kXq9VG": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>I just received your PerfectFeast overnight delivery. PFE Corporate Gifts provides exemplary customer service. Yes, you can quote me on that! Thanks Paul</p>",
+            "author": "Mike"
+          }
+        },
+        "testimonial_nrp3N7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>This went very well from the employees perspective and was very easy to do from the employer perspective.<br/>I have also forwarded this to my husband and a few other friends who own business’as this is an affordable way to give at holiday time.</p><p>Thanks,</p>",
+            "author": "Barb"
+          }
+        },
+        "testimonial_yFaCea": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Can I just say WOW!!!!! I just sent my fax yesterday and what should I find in my mailbox today, but the gift certificates that I requested. I am so pleased with your quick response and great customer service. You will definitely have my business for many years to come.....</p><p>Thanks,</p>",
+            "author": "Traci"
+          }
+        },
+        "testimonial_tkr8cY": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Wow....That was Fast!!</p><p>Thank you and have a great Holiday!</p>",
+            "author": "Kim"
+          }
+        },
+        "testimonial_FnmJkn": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>We got our gift certificates yesterday and I wanted to thank you for sending them out so quickly! I am sure our employees will be even happier with them this year then last year with the extra choices they will have.</p><p>Thank you, and have a wonderful Holiday Season!</p>",
+            "author": "Margaret"
+          }
+        },
+        "testimonial_QMrExW": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>The certificates successfully arrived today...you did an AMAZING job!!</p><p>Thank you, and have a wonderful Holiday Season!</p>",
+            "author": "Craig"
+          }
+        },
+        "testimonial_wgWth8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Thanks for everything. Thanks for being so prompt and efficient. It’s been a pleasure to work with you.</p><p>Take care.</p>",
+            "author": "Kathy"
+          }
+        },
+        "testimonial_iH7XXX": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p><em>Since you provided us with excellent service last year, we have decided to keep our business with you! We will again be ordering gift cert. for our employees. We will be doing this online to pay with credit card. I just wanted you to know that we're sticking with you. Thanks again!</em></p>",
+            "author": "Amanda"
+          }
+        },
+        "testimonial_4K7Dng": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>I just wanted to thank you for your prompt response to our request for the Turkey gift certificates. Our customers were extremely happy with them and it was a pleasure to do business with you. I will be using your company again in the future.</p><p>Thank you again,</p>",
+            "author": "Lauren"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_Fy8kMe",
+        "testimonial_976DEh",
+        "testimonial_cBKT9A",
+        "testimonial_kXq9VG",
+        "testimonial_nrp3N7",
+        "testimonial_yFaCea",
+        "testimonial_tkr8cY",
+        "testimonial_FnmJkn",
+        "testimonial_QMrExW",
+        "testimonial_wgWth8",
+        "testimonial_iH7XXX",
+        "testimonial_4K7Dng"
+      ],
+      "name": "Testimonial Grid",
+      "settings": {
+        "heading": "What Our Customers Say",
+        "subheading": "Read real testimonials from satisfied customers",
+        "background_color": "#f9fafb",
+        "layout": "grid"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "banner-hero",
+    "testimonial_grid_8GTLfe",
+    "main"
+  ]
+}

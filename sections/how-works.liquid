@@ -1,0 +1,163 @@
+<!-- sections/how-works.liquid -->
+{% comment %} 
+                                      How Our Gift Certificates Work Section
+                                      Features: Step-by-step process with icons and connecting dots 
+{% endcomment %}
+
+<section class="py-16 text-base leading-[1.125rem] text-gray-700 text-center md:py-9">
+  <div class="container mx-auto px-4 max-w-7xl">
+
+    {% if section.settings.title != blank %}
+      <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <p class="text-lg text-gray-600 mb-8">
+        {{ section.settings.description }}
+      </p>
+    {% endif %}
+
+    <!-- Steps -->
+    {% if section.blocks.size > 0 %}
+      <ul class="py-4 pb-8 grid grid-cols-2 lg:grid-cols-4 justify-between max-w-5xl mx-auto">
+        {% for block in section.blocks %}
+          <li class="inline-block align-top md:ml-9 w-[185px] relative first:ml-0 
+                     md:w-[150px] ml-0 sm:mb-8" {{ block.shopify_attributes }}>
+
+            <!-- Icon -->
+            <div class="h-[115px] mb-4 md:h-[90px] sm:h-20 flex items-center justify-center">
+              {% if block.settings.icon != blank %}
+                <img
+                  src="{{ block.settings.icon | image_url: width: 150 }}"
+                  alt="{{ block.settings.icon.alt | default: block.settings.step_text }}"
+                  width="150"
+                  height="150"
+                  class="h-full w-2/3 lg:w-auto object-contain">
+              {% else %}
+                <!-- Placeholder -->
+                <div class="h-full w-full object-contain bg-gray-200 rounded flex items-center justify-center">
+                  <span class="text-gray-400 text-xs">Icon</span>
+                </div>
+              {% endif %}
+            </div>
+
+
+            {% if block.settings.step_text != blank %}
+              <span class="text-sm font-semibold text-gray-800 uppercase block break-words">
+                {{ block.settings.step_text | replace: '<br>', '<br>' }}
+              </span>
+            {% endif %}
+
+
+            {% unless forloop.last %}
+              <div class='hidden absolute w-2 h-2 rounded-full bg-brandPrimary top-1/2 -right-[62px] lg:block
+            before:content-[""] before:w-2 before:h-2 before:rounded-full before:bg-brandPrimary before:absolute before:top-0 before:-left-[15px] after:content-[""] after:w-2 after:h-2 after:rounded-full after:bg-brandPrimary after:absolute after:top-0 after:-right-[15px]'>
+</div>
+
+            {% endunless %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <!-- CTA Button -->
+    {% if section.settings.button_text != blank %}
+      <a
+        href="{{ section.settings.button_url | default: '#' }}"
+        class="btn inline-block px-8 py-3 font-semibold uppercase rounded transition-colors duration-300"
+        style="background-color: {{ section.settings.button_bg_color | default: '#ED2129' }}; color: {{ section.settings.button_text_color | default: '#FFFFFF' }};"
+        onmouseover="this.style.backgroundColor='{{ section.settings.button_hover_color | default: '#C01E25' }}'"
+        onmouseout="this.style.backgroundColor='{{ section.settings.button_bg_color | default: '#ED2129' }}'">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "How It Works",
+    "tag": "section",
+    "class": "how-works-section",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section title",
+        "default": "How Our Gift Certificates Work"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Section description",
+        "default": "Placing an order from Perfect Feast is easy, convenient, and simple. Corporate gifts have never been easier."
+      },
+      {
+        "type": "header",
+        "content": "Call to Action"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text",
+        "default": "ORDER NOW"
+      }, {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button URL"
+      }, {
+        "type": "color",
+        "id": "button_bg_color",
+        "label": "Button background color",
+        "default": "#ED2129"
+      }, {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button text color",
+        "default": "#FFFFFF"
+      }, {
+        "type": "color",
+        "id": "button_hover_color",
+        "label": "Button hover color",
+        "default": "#C01E25"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "step",
+        "name": "Process Step",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Step icon",
+            "info": "Icon representing this step in the process"
+          }, {
+            "type": "text",
+            "id": "step_text",
+            "label": "Step text",
+            "default": "Add your custom step text here",
+            "info": "Use <br> for line breaks"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "How It Works",
+        "settings": {
+          "title": "How Our Gift Certificates Work",
+          "description": "Placing an order from Perfect Feast is easy, convenient, and simple. Corporate gifts have never been easier.",
+          "button_text": "ORDER NOW"
+        }
+      }
+    ]
+  }
+{% endschema %}

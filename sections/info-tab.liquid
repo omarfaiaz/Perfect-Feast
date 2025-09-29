@@ -1,0 +1,258 @@
+<!-- sections/gift-certificates-tabs.liquid -->
+{% comment %} 
+                                                            Gift Certificates Tabs Section
+                                                            Features: Interactive tabs with product certificates, responsive layout 
+{% endcomment %}
+
+<section class="info-tab-section py-16">
+  <div class="container mx-auto px-4">
+    <div class="about-main-holder flex flex-row-reverse justify-between md:flex-col md:items-start lg:flex-row-reverse lg:justify-between">
+      <!-- Text/Content Area -->
+      <div class="overflow-hidden ">
+        <h2 class="text-center m-0 py-10 px-0 bg-white uppercase md:py-8 md:px-3">
+          {{ section.settings.main_title | default: 'Perfect Feast Gift Certificates' }}
+        </h2>
+
+        <div class="about-tabs">
+          <!-- Tab Navigation -->
+          <ul class="tabs-links bg-white flex justify-start p-0 !mb-0">
+            {% for block in section.blocks %}
+              <li class="w-[20%] border-l border-gray-100 first:border-0 inline-block">
+                <a
+                  href="#tabs-{{ forloop.index }}"
+                  class="tab-link h-[50px] flex items-center justify-center p-0  text-sm text-gray-800 uppercase hover:bg-gray-100 cursor-pointer
+                          {% if forloop.first %}border border-brandPrimary bg-gray-100 
+                          {%else %}bg-white
+                          {% endif %}"
+                  data-tab="{{ forloop.index }}"
+                  {{ block.shopify_attributes }}>
+                  {% if block.settings.tab_icon != blank %}
+                    <img
+                      src="{{ block.settings.tab_icon | image_url: width: 50 }}"
+                      alt="{{ block.settings.tab_icon.alt | default: block.settings.tab_title }}"
+                      class="h-6 md:h-5">
+                  {% endif %}
+                  <span class="hidden lg:block text-sm font-semibold text-left md:text-[13px]">
+                    {{ block.settings.tab_title }}
+                    {% if block.settings.tab_subtitle != blank %}
+                      <em class="not-italic text-[9px] text-gray-600 block md:text-[8px]">{{ block.settings.tab_subtitle }}</em>
+                    {% endif %}
+                  </span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+
+          <!-- Tab Content -->
+          {% for block in section.blocks %}
+            <div
+              class="tabs-content bg-[#f9fafb] p-4 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-8
+                        md:p-8
+                        {% unless forloop.first %}hidden{% endunless %}"
+              id="tabs-{{ forloop.index }}"
+              {{ block.shopify_attributes }}>
+
+              <!-- Info Content -->
+              <div class="info text-gray-700 text-sm w-full md:w-3/5">
+                {% if block.settings.content_title != blank %}
+                  <h4 class="text-2xl text-gray-800 uppercase font-bold mb-4">
+                    {{ block.settings.content_title }}
+                  </h4>
+                {% endif %}
+
+                {% if block.settings.content_description != blank %}
+                  <div class="certificate-description">
+                    {{ block.settings.content_description }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <!-- Buy Section -->
+              <div class="w-full md:w-2/5 text-center">
+                {% if block.settings.certificate_image != blank %}
+                  <img
+                    src="{{ block.settings.certificate_image | image_url: width: 300 }}"
+                    alt="{{ block.settings.certificate_image.alt | default: block.settings.content_title }}"
+                    class="block mx-auto mb-8 w-[90%] h-auto">
+                {% endif %}
+
+                {% if block.settings.cta_text != blank %}
+                  <a href="{{ block.settings.cta_url | default: '#' }}" class="btn btn--primary">
+                    {{ block.settings.cta_text }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Gift Certificates Tabs",
+    "tag": "section",
+    "class": "info-tab-section",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Content"
+      },
+      {
+        "type": "text",
+        "id": "main_title",
+        "label": "Main title",
+        "default": "Perfect Feast Gift Certificates"
+      },
+      {
+        "type": "header",
+        "content": "Sidebar Links"
+      },
+      {
+        "type": "text",
+        "id": "reminder_link_text",
+        "label": "Reminder link text",
+        "default": "Want a Reminder When It's Closer to the Holidays"
+      }, {
+        "type": "url",
+        "id": "reminder_link_url",
+        "label": "Reminder link URL"
+      }, {
+        "type": "text",
+        "id": "testimonials_link_text",
+        "label": "Testimonials link text",
+        "default": "See What Our Customers Are Saying"
+      }, {
+        "type": "url",
+        "id": "testimonials_link_url",
+        "label": "Testimonials link URL"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "certificate_tab",
+        "name": "Certificate Tab",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Tab Navigation"
+          },
+          {
+            "type": "image_picker",
+            "id": "tab_icon",
+            "label": "Tab icon",
+            "info": "Small icon for the tab navigation"
+          },
+          {
+            "type": "text",
+            "id": "tab_title",
+            "label": "Tab title",
+            "default": "Turkey, Ham, or Fruit & Vegetables"
+          },
+          {
+            "type": "text",
+            "id": "tab_subtitle",
+            "label": "Tab subtitle",
+            "info": "Optional smaller text below tab title"
+          }, {
+            "type": "header",
+            "content": "Certificate Image"
+          }, {
+            "type": "image_picker",
+            "id": "certificate_image",
+            "label": "Certificate image",
+            "info": "Large certificate image shown in sidebar"
+          }, {
+            "type": "header",
+            "content": "Tab Content"
+          }, {
+            "type": "text",
+            "id": "content_title",
+            "label": "Content title",
+            "default": "Turkey, Ham, or Fruit & Vegetable Gift Certificates"
+          }, {
+            "type": "richtext",
+            "id": "content_description",
+            "label": "Content description",
+            "default": "<p><strong>Options:</strong> Gift Certificate is good for your choice of either a whole turkey or turkey breast or a ham or an assortment of fresh fruits and vegetables.</p><p>You may order any maximum dollar value <strong>between $10 and $50,</strong> in whole dollar increments. No order is too large or too small.</p><p><strong>Your price:</strong> $0.50 more than the maximum dollar value you choose. For example, a $16 certificate will cost you $16.50. There are no other charges or fees, except any express shipping you require. <strong>Ground shipping is free.</strong></p>"
+          }, {
+            "type": "header",
+            "content": "Product Section"
+          }, {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Product image",
+            "info": "Product image shown in the buy section"
+          }, {
+            "type": "text",
+            "id": "cta_text",
+            "label": "Call to action text",
+            "default": "ORDER NOW"
+          }, {
+            "type": "url",
+            "id": "cta_url",
+            "label": "Call to action URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Gift Certificates Tabs",
+        "blocks": [
+          {
+            "type": "certificate_tab",
+            "settings": {
+              "tab_title": "Turkey, Ham,",
+              "tab_subtitle": "or Fruit & Vegetables",
+              "content_title": "Turkey, Ham, or Fruit & Vegetable Gift Certificates",
+              "cta_text": "ORDER NOW"
+            }
+          },
+          {
+            "type": "certificate_tab",
+            "settings": {
+              "tab_title": "Turkey",
+              "tab_subtitle": "or Ham",
+              "content_title": "Turkey or Ham Gift Certificates",
+              "cta_text": "ORDER NOW"
+            }
+          },
+          {
+            "type": "certificate_tab",
+            "settings": {
+              "tab_title": "Turkeys",
+              "content_title": "Turkey Gift Certificates",
+              "cta_text": "ORDER NOW"
+            }
+          },
+          {
+            "type": "certificate_tab",
+            "settings": {
+              "tab_title": "Hams",
+              "content_title": "Ham Gift Certificates",
+              "cta_text": "ORDER NOW"
+            }
+          }, {
+            "type": "certificate_tab",
+            "settings": {
+              "tab_title": "Beef Steaks",
+              "content_title": "Beef Steak Gift Certificate",
+              "cta_text": "ORDER NOW"
+            }
+          }, {
+            "type": "certificate_tab",
+            "settings": {
+              "tab_title": "General Grocery",
+              "content_title": "General Grocery",
+              "cta_text": "ORDER NOW"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

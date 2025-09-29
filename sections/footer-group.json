@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:general.footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "logo": "shopify://shop_images/Perfect_Feast_Logo_CMYK.png",
+        "menu": "footer",
+        "copyright_text": "PFR Corporate Gifts, LLC.",
+        "copyright_subtext": "All rights reserved.",
+        "address": "461 East 1000 South, Suite B Pleasant Grove, UT 84062",
+        "phone": "801-569-2381",
+        "email": "info@pfrcorporategifts.com",
+        "cta_text": "ORDER NOW",
+        "cta_link": "/",
+        "security_badge": "shopify://shop_images/security-seal.png",
+        "payment_img": "shopify://shop_images/cards.png"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

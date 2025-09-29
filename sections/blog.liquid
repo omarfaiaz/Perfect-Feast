@@ -1,0 +1,166 @@
+{% comment %} 
+      Blog Post List Section with Featured Post and "Load More" Pagination (AJAX)
+{% endcomment %}
+
+{% assign per_page = 6 %}
+
+{% paginate blog.articles by per_page %}
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4 max-w-5xl">
+
+      {% if paginate.current_page == 1 %}
+        {% assign posts = blog.articles %}
+        {% assign featured_post = posts.first %}
+        {% assign more_posts = posts | slice: 1, per_page | default: posts %}
+
+        <!-- Featured Post (page 1 only) -->
+        <div id="featured-post" class="mb-8">
+          <a href="{{ featured_post.url }}" class="block bg-white rounded shadow overflow-hidden">
+            {% if featured_post.image %}
+              <img
+                src="{{ featured_post.image | image_url: width: 800 }}"
+                alt="{{ featured_post.title | escape }}"
+                class="w-full h-88 object-cover" />
+            {% endif %}
+            <div class="p-6">
+              <h2 class="text-lg font-semibold text-gray-900 mb-2">{{ featured_post.title }}</h2>
+              <div class="text-sm text-gray-500 mb-2">
+                By {{ featured_post.author }} | Posted on {{ featured_post.published_at | date: "%B %d, %Y" }}
+              </div>
+              <p class="text-gray-700 mb-4 line-clamp-2">{{ featured_post.excerpt_or_content | strip_html | truncate: 120 }}</p>
+              <span class="text-brandPrimary font-semibold text-sm">READ MORE &rarr;</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- More Articles -->
+        <h3 class="text-base font-bold text-brandPrimary mb-4">More Articles</h3>
+        <div
+          id="blog-grid"
+          class="grid grid-cols-1 md:grid-cols-2 gap-6"
+          data-section-id="{{ section.id }}"
+          data-blog-url="{{ blog.url }}"
+          data-total-pages="{{ paginate.pages }}"
+          data-current-page="{{ paginate.current_page }}"
+          data-per-page="{{ per_page }}">
+          {% for article in more_posts limit: 4 %}
+            {% render 'post-card'
+              , article: article %}
+          {% endfor %}
+        </div>
+      {% else %}
+
+        <div
+          id="blog-grid"
+          class="grid grid-cols-1 md:grid-cols-2 gap-6"
+          data-section-id="{{ section.id }}"
+          data-blog-url="{{ blog.url }}"
+          data-total-pages="{{ paginate.pages }}"
+          data-current-page="{{ paginate.current_page }}"
+          data-per-page="{{ per_page }}">
+          {% for article in blog.articles %}
+            {% render 'post-card'
+              , article: article %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <!-- Load More Button -->
+      {% if paginate.current_page < paginate.pages %}
+        <div class="flex justify-center mt-8" id="LoadMoreWrap-{{ section.id }}">
+          <button id="load-more-btn-{{ section.id }}" class="btn btn--primary" type="button" >
+            LOAD MORE
+          </button>
+          <div id="load-more-spinner-{{ section.id }}" class="hidden mt-3 ml-3">Loading…</div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog Post List",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Blog Post List",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+  (function() {
+  const grid = document.getElementById('blog-grid');
+  if (!grid) return;
+  
+  const sectionId   = grid.dataset.sectionId;
+  const blogUrl     = grid.dataset.blogUrl;
+  const totalPages  = parseInt(grid.dataset.totalPages || '1', 10);
+  let currentPage   = parseInt(grid.dataset.currentPage || '1', 10);
+  
+  const btn     = document.getElementById('load-more-btn-' + sectionId);
+  const spinner = document.getElementById('load-more-spinner-' + sectionId);
+  
+  if (!btn) return;
+  
+  function setLoading(state) {
+    if (state) {
+      btn.disabled = true;
+      spinner && spinner.classList.remove('hidden');
+    } else {
+      btn.disabled = false;
+      spinner && spinner.classList.add('hidden');
+    }
+  }
+  
+  btn.addEventListener('click', async () => {
+    if (currentPage >= totalPages) return;
+  
+    const nextPage = currentPage + 1;
+  
+    // Fetch just this section’s HTML for the next page
+    const url = new URL(window.location.origin + blogUrl);
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', String(nextPage));
+    params.set('sections', sectionId);
+    url.search = params.toString();
+  
+    setLoading(true);
+    try {
+      const res = await fetch(url.toString(), { headers: { 'X-Requested-With': 'XMLHttpRequest' }});
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+  
+      const json = await res.json();
+      const html = json[sectionId];
+      if (!html) throw new Error('Section HTML missing');
+  
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+  
+      // On page >= 2, the returned HTML contains only a grid (no featured).
+      // On page 1 (we never fetch page 1), it would include the featured.
+      const nextGrid = temp.querySelector('#blog-grid');
+      if (!nextGrid) throw new Error('Grid missing in response');
+  
+      const frag = document.createDocumentFragment();
+      Array.from(nextGrid.children).forEach(node => frag.appendChild(node));
+      grid.appendChild(frag);
+  
+      currentPage = nextPage;
+  
+      if (currentPage >= totalPages) {
+        btn.remove();
+      }
+    } catch (err) {
+      console.error(err);
+      btn.textContent = 'Retry';
+      btn.disabled = false;
+    } finally {
+      setLoading(false);
+    }
+  });
+  })();
+</script>

@@ -1,0 +1,127 @@
+<!-- sections/link-box.liquid -->
+{% comment %} 
+                                          Banner Image Section
+                                          Features: Full-width banner with optional overlay text and button   
+{% endcomment %}
+
+<section class="relative w-full" style="
+    {% if section.settings.banner_image != blank %}
+      background-image: url('{{ section.settings.banner_image | image_url: width: 2000 }}');
+      background-size: cover;
+      background-position: center;
+    {% else %}
+      background-color: {{ section.settings.bg_color }};
+    {% endif %}
+  ">
+  <div style="height: {{ section.settings.section_height }}px;">
+    {% if section.settings.banner_image != blank %}
+      <img
+        src="{{ section.settings.banner_image | image_url: width: 2000 }}"
+        alt="{{ section.settings.overlay_text | default: 'Banner Image' }}"
+        class="w-full object-cover absolute inset-0 h-full"
+        style="height: {{ section.settings.section_height }}px; z-index: 1;" />
+    {% endif %}
+
+   {% if section.settings.banner_image != blank %}
+  {% if section.settings.overlay_text != blank or section.settings.button_text != blank %}
+    <!-- Overlay background -->
+    <div class="absolute inset-0 w-full h-full" style="background-color: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity | default: 0.1 }}; z-index: 2;"></div>
+  {% endif %}
+{% endif %}
+
+    {% if section.settings.overlay_text != blank or section.settings.button_text != blank %}
+      <!-- Centered content -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4" style="z-index: 3;">
+        {% if section.settings.overlay_text != blank %}
+          <h1 class="text-white text-3xl lg:text-4xl font-bold mb-4">
+            {{ section.settings.overlay_text }}
+          </h1>
+        {% endif %}
+
+        {% if section.settings.subtext != blank %}
+            <div class="text-white text-left">
+              {{ section.settings.subtext }} 
+            </div>
+            
+        {% endif %}
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary mt-4">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Banner Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#ED2129"
+      },
+      {
+        "type": "range",
+        "id": "section_height",
+        "label": "Section Height (in pixels)",
+        "default": 640,
+        "min": 200,
+        "max": 2000,
+        "step": 20
+      },
+      {
+        "type": "color",
+        "id": "overlay_color",
+        "label": "Overlay Color",
+        "default": "#000000",
+        "info": "Only applies if a background image is set.",
+      }, {
+        "type": "range",
+        "id": "overlay_opacity",
+        "label": "Overlay Opacity (0 to 1)",
+        "default": 0.1,
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "info": "Only applies if a background image is set.",
+        "visible_if":"{{ section.settings.banner_image != blank }}"
+      }, {
+        "type": "text",
+        "id": "overlay_text",
+        "label": "Overlay Text",
+        "default": "Your Banner Text Here"
+      },
+      {
+        "type": "richtext",
+        "id": "subtext",
+        "label": "Subtext"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Click Here"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link",
+        "default": "/"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner Image",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

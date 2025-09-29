@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner-hero": {
+      "type": "banner-img",
+      "settings": {
+        "banner_image": "shopify://shop_images/title-4.jpg",
+        "bg_color": "#ed2129",
+        "section_height": 240,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.1,
+        "overlay_text": "",
+        "subtext": "",
+        "button_text": "",
+        "button_link": "/"
+      }
+    },
+    "faq_tab_iiGhxR": {
+      "type": "faq-tab",
+      "blocks": {
+        "tab_QaALJP": {
+          "type": "tab",
+          "settings": {
+            "tab_ref": "for-givers",
+            "faq_page_url": "shopify://pages/gift-card-purchasers"
+          }
+        },
+        "tab_GikJaz": {
+          "type": "tab",
+          "settings": {
+            "tab_ref": "for-recipients",
+            "faq_page_url": ""
+          }
+        },
+        "tab_wbjxnV": {
+          "type": "tab",
+          "settings": {
+            "tab_ref": "store-managers",
+            "faq_page_url": "shopify://pages/gift-card-retailers"
+          }
+        }
+      },
+      "block_order": ["tab_QaALJP", "tab_GikJaz", "tab_wbjxnV"],
+      "name": "Tabbed FAQs",
+      "settings": {
+        "aria_label": "<h1>How to Redeem Perfect Feast Gift Certificates</h1>",
+        "active_tab_handle": "for-recipients"
+      }
+    }
+  },
+  "order": ["banner-hero", "faq_tab_iiGhxR"]
+}

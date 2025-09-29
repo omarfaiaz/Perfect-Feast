@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner-hero": {
+      "type": "banner-img",
+      "settings": {
+        "bg_color": "#ed2129",
+        "section_height": 240,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0.1,
+        "overlay_text": "{{ page.title }}",
+        "subtext": "",
+        "button_text": "",
+        "button_link": "/"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "contact_form_app_jpJBUr": {
+      "type": "contact-form_app",
+      "name": "Contact (App form)",
+      "settings": {
+        "show_heading": false,
+        "main_heading": "Contact Us",
+        "heading": "",
+        "subheading": "Type your Question or Comment below.",
+        "description": "We promise your personal information will not be given to anyone else without your permission.",
+        "show_privacy_notice": true,
+        "privacy_notice": "<p>We promise your personal information will not be given to anyone else without your permission.</p>",
+        "embed_form": "<script src=\"https://js.hsforms.net/forms/embed/40212992.js\" defer></script>\n<div class=\"hs-form-frame\" data-region=\"na1\" data-form-id=\"1b0bf0ee-2ba6-443c-802a-30c5e33a029c\" data-portal-id=\"40212992\"></div>",
+        "show_contact_info": true,
+        "contact_info_heading": "CONTACT INFO",
+        "contact_address": "461 East 1000 South, Suite B\nPleasant Grove, UT 84062",
+        "contact_email": "info@perfectgifts.com",
+        "contact_phone": "801-569-2381",
+        "show_social_links": true
+      }
+    }
+  },
+  "order": [
+    "banner-hero",
+    "main",
+    "contact_form_app_jpJBUr"
+  ]
+}

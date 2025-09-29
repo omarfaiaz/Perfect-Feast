@@ -1,0 +1,366 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_with_app_form_bAWPyd": {
+      "type": "hero-with-app-form",
+      "name": "Hero APP Form",
+      "settings": {
+        "background_image": "shopify://shop_images/banner-hero.avif",
+        "overlay_opacity": 70,
+        "title": "<h1><strong>End-to-end gifting support for enterprises</strong></h1>",
+        "description": "Delight your employees, customers, and clients with our customizable turkey, ham, grocery, or holiday gift packages",
+        "show_enterprise_button": false,
+        "enterprise_button_text": "Enterprise Packages",
+        "enterprise_button_url": "",
+        "embed_form": "<script src=\"https://js.hsforms.net/forms/embed/40212992.js\" defer></script>\n<div class=\"hs-form-frame\" data-region=\"na1\" data-form-id=\"cace368e-ed83-4770-95c5-9ab34b1cbd43\" data-portal-id=\"40212992\"></div>",
+        "section_id": ""
+      }
+    },
+    "brand_logos": {
+      "type": "brand-logos",
+      "blocks": {
+        "logo_QEXxhQ": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/AUH-Resized-1.avif",
+            "company_name": "Advocate Aurora",
+            "link": "",
+            "open_new_tab": true
+          }
+        },
+        "logo_83n9Mp": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/display_image.avif",
+            "company_name": "AVI Food Systems",
+            "link": "",
+            "open_new_tab": true
+          }
+        },
+        "logo_qezLyi": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Holiday_Inn_logo_horizontal.avif",
+            "company_name": "Holiday Inn",
+            "link": "",
+            "open_new_tab": true
+          }
+        },
+        "logo_eKBBwz": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/sanford-health-logo.avif",
+            "company_name": "Sanford Health",
+            "link": "",
+            "open_new_tab": true
+          }
+        },
+        "logo_3d67kR": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/apex-advertising-logo.avif",
+            "company_name": "Apex Advertising",
+            "link": "",
+            "open_new_tab": true
+          }
+        },
+        "logo_TMeRBT": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/harbor-distribution-logo.avif",
+            "company_name": "Harbor",
+            "link": "",
+            "open_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_QEXxhQ",
+        "logo_83n9Mp",
+        "logo_qezLyi",
+        "logo_eKBBwz",
+        "logo_3d67kR",
+        "logo_TMeRBT"
+      ],
+      "name": "Brand Logos",
+      "settings": {
+        "title": "Unmatched service from Main Street to Fortune 500",
+        "description": "Over 5 million gifts appreciated by companies and HR teams nationwide",
+        "desktop_columns": "6",
+        "show_company_names": false,
+        "background_color": "#f8f9fa",
+        "section_id": ""
+      }
+    },
+    "info_tab": {
+      "type": "info-tab",
+      "blocks": {
+        "certificate_tab_GJY4M4": {
+          "type": "certificate_tab",
+          "settings": {
+            "tab_icon": "shopify://shop_images/icon-4-1_1.webp",
+            "tab_title": "Turkey, Ham,",
+            "tab_subtitle": "or Fruit & Vegetables",
+            "certificate_image": "shopify://shop_images/beef-steak-tab.png",
+            "content_title": "Turkey, Ham, or Fruit & Vegetable Gift Certificates",
+            "content_description": "<p><strong>Options:</strong> Gift Certificate is good for your choice of either a whole turkey or turkey breast or a ham or an assortment of fresh fruits and vegetables.</p><p>You may order any maximum dollar value <strong>between $10 and $50,</strong> in whole dollar increments. No order is too large or too small.</p><p><strong>Your price:</strong> $0.50 more than the maximum dollar value you choose. For example, a $16 certificate will cost you $16.50. There are no other charges or fees, except any express shipping you require. <strong>Ground shipping is free. </strong>We will always ship within one business day of receiving your order. (Usually the same day!)</p>",
+            "cta_text": "ORDER NOW",
+            "cta_url": "shopify://products/turkey-ham-or-fruit-vegetable-gift-certificates"
+          }
+        },
+        "certificate_tab_n7UiMX": {
+          "type": "certificate_tab",
+          "settings": {
+            "tab_icon": "shopify://shop_images/icon-3-1.webp",
+            "tab_title": "Turkey",
+            "tab_subtitle": "or Ham",
+            "certificate_image": "shopify://shop_images/turkey-ham-tab.png",
+            "content_title": "Turkey or Ham Gift Certificates",
+            "content_description": "<p><strong>Options:</strong> Gift Certificate is good for your choice of either a whole turkey or turkey breast or a ham. You may order any maximum dollar value <strong>between $10 and $50,</strong> in whole dollar increments. (Click here for help on what size to buy.) No order is too large or too small.<strong>Your price:</strong> $0.50 more than the maximum dollar value you choose. For example, a $16 certificate will cost you $16.50. There are no other charges or fees, except any express shipping you require. <strong>Ground shipping is free. </strong>We will always ship within one business day of receiving your order. (Usually the same day!). <strong>Payment terms:</strong> We accept major credit cards, checks, or 30-day credit terms.<strong>Lead time:</strong> We will always ship within one business day of receiving your order. <strong>(Usually the same day!)</strong></p>",
+            "cta_text": "ORDER NOW",
+            "cta_url": "shopify://products/turkey-or-ham-gift-certificates"
+          }
+        },
+        "certificate_tab_GR9FMV": {
+          "type": "certificate_tab",
+          "settings": {
+            "tab_icon": "shopify://shop_images/icon-1-1.webp",
+            "tab_title": "Turkeys",
+            "tab_subtitle": "",
+            "certificate_image": "shopify://shop_images/turkey-tab.png",
+            "content_title": "Turkey Gift Certificates",
+            "content_description": "<p><strong>Options:</strong> Gift Certificate is good for one whole turkey or one turkey breast. You may order any maximum dollar value <strong>between $10 and $50,</strong> in whole dollar increments. (Click here for help on what size to buy.) No order is too large or too small.<strong>Your price:</strong> $0.50 more than the maximum dollar value you choose. For example, a $16 certificate will cost you $16.50. There are no other charges or fees, except any express shipping you require. <strong>Ground shipping is free. </strong>We will always ship within one business day of receiving your order. (Usually the same day!). <strong>Payment terms:</strong> We accept major credit cards, checks, or 30-day credit terms.<strong>Lead time:</strong> We will always ship within one business day of receiving your order. <strong>(Usually the same day!)</strong></p>",
+            "cta_text": "ORDER NOW",
+            "cta_url": "shopify://products/turkey-gift-certificates"
+          }
+        },
+        "certificate_tab_jR8nMm": {
+          "type": "certificate_tab",
+          "settings": {
+            "tab_icon": "shopify://shop_images/icon-2-1.webp",
+            "tab_title": "Hams",
+            "tab_subtitle": "",
+            "certificate_image": "shopify://shop_images/ham-tab.png",
+            "content_title": "Ham Gift Certificates",
+            "content_description": "<p><strong>Options:</strong> Gift Certificate is good for one ham. You may order any maximum dollar value <strong>between $10 and $50,</strong> in whole dollar increments. (Click here for help on what size to buy.) No order is too large or too small.<strong>Your price:</strong> $0.50 more than the maximum dollar value you choose. For example, a $16 certificate will cost you $16.50. There are no other charges or fees, except any express shipping you require. <strong>Ground shipping is free. </strong>We will always ship within one business day of receiving your order. (Usually the same day!). <strong>Payment terms:</strong> We accept major credit cards, checks, or 30-day credit terms.<strong>Lead time:</strong> We will always ship within one business day of receiving your order. <strong>(Usually the same day!)</strong></p>",
+            "cta_text": "ORDER NOW",
+            "cta_url": "shopify://products/ham-gift-certificates"
+          }
+        },
+        "certificate_tab_778EYh": {
+          "type": "certificate_tab",
+          "settings": {
+            "tab_icon": "shopify://shop_images/icon-5-1.webp",
+            "tab_title": "Beef Steaks",
+            "tab_subtitle": "",
+            "certificate_image": "shopify://shop_images/beef-steak-tab.png",
+            "content_title": "Beef Steak Gift Certificate",
+            "content_description": "<p><strong>Options:</strong> Gift Certificate is good for your choice of either a whole turkey or turkey breast or a ham or an assortment of fresh fruits and vegetables.</p><p>You may order any maximum dollar value <strong>between $10 and $50,</strong> in whole dollar increments. No order is too large or too small.</p><p><strong>Your price:</strong> $0.50 more than the maximum dollar value you choose. For example, a $16 certificate will cost you $16.50. There are no other charges or fees, except any express shipping you require. <strong>Ground shipping is free. </strong>We will always ship within one business day of receiving your order. (Usually the same day!)</p>",
+            "cta_text": "ORDER NOW",
+            "cta_url": "shopify://products/beef-steak-gift-certificate"
+          }
+        },
+        "certificate_tab_m3TKBR": {
+          "type": "certificate_tab",
+          "settings": {
+            "tab_icon": "shopify://shop_images/icon-4-1.webp",
+            "tab_title": "General Grocery",
+            "tab_subtitle": "",
+            "certificate_image": "shopify://shop_images/Perfect_Feast_General_Gift_Certificate-1024x683.jpg",
+            "content_title": "General Grocery",
+            "content_description": "<p><strong>Options:</strong> Gift Certificate is good for your choice of either a whole turkey or turkey breast or a ham or an assortment of fresh fruits and vegetables.</p><p>You may order any maximum dollar value <strong>between $10 and $50,</strong> in whole dollar increments. No order is too large or too small.</p><p><strong>Your price:</strong> $0.50 more than the maximum dollar value you choose. For example, a $16 certificate will cost you $16.50. There are no other charges or fees, except any express shipping you require. <strong>Ground shipping is free. </strong>We will always ship within one business day of receiving your order. (Usually the same day!)</p>",
+            "cta_text": "ORDER NOW",
+            "cta_url": "shopify://products/general-grocery"
+          }
+        }
+      },
+      "block_order": [
+        "certificate_tab_GJY4M4",
+        "certificate_tab_n7UiMX",
+        "certificate_tab_GR9FMV",
+        "certificate_tab_jR8nMm",
+        "certificate_tab_778EYh",
+        "certificate_tab_m3TKBR"
+      ],
+      "name": "Gift Certificates Tabs",
+      "settings": {
+        "main_title": "Perfect Feast Gift Certificates",
+        "reminder_link_text": "Want a Reminder When It's Closer to the Holidays",
+        "reminder_link_url": "",
+        "testimonials_link_text": "See What Our Customers Are Saying",
+        "testimonials_link_url": ""
+      }
+    },
+    "gift_cards_preview": {
+      "type": "gift-cards-preview",
+      "name": "Gift Cards Preview",
+      "settings": {
+        "heading": "GIFT CERTIFICATES FOR TURKEY, HAM & MORE!",
+        "collection": "gift-certificates",
+        "button1_text": "Want a Reminder When It's Closer to the Holidays",
+        "button1_url": "shopify://pages/request-a-reminder",
+        "button2_text": "See What Our Customers Are Saying",
+        "button2_url": "shopify://pages/testimonials"
+      }
+    },
+    "process_box_pyYnBb": {
+      "type": "process-box",
+      "blocks": {
+        "step_E4iqMF": {
+          "type": "step",
+          "settings": {
+            "step_title": "Design Your Employee Gifts",
+            "step_description": "Create the perfect gift program tailored to your organization",
+            "step_point_1": "Certificate values and types",
+            "step_point_2": "Custom branding, cards, and messaging",
+            "step_point_3": "Delivery methods, locations, and timing",
+            "step_point_4": "",
+            "step_point_5": ""
+          }
+        },
+        "step_NcJGAL": {
+          "type": "step",
+          "settings": {
+            "step_title": "Choose Shipping Method",
+            "step_description": "Select the most convenient delivery option for your team",
+            "step_point_1": "Bulk shipping to your office",
+            "step_point_2": "Direct delivery to employees",
+            "step_point_3": "Hybrid distribution options",
+            "step_point_4": "",
+            "step_point_5": ""
+          }
+        },
+        "step_fADtMN": {
+          "type": "step",
+          "settings": {
+            "step_title": "We Handle Everything Else",
+            "step_description": "Sit back and let us manage all the logistics and support",
+            "step_point_1": "Order processing and fulfillment",
+            "step_point_2": "Customer service and support",
+            "step_point_3": "Reporting and analytics",
+            "step_point_4": "",
+            "step_point_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_E4iqMF",
+        "step_NcJGAL",
+        "step_fADtMN"
+      ],
+      "name": "Process Box",
+      "settings": {
+        "title": "Experience Our Hands-on Approach",
+        "subtitle": "3-step process for enterprises:"
+      }
+    },
+    
+    "feature_box_tMYVQf": {
+      "type": "feature-box",
+      "blocks": {
+        "feature_8zMHJ7": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/chart.png",
+            "heading": "Dedicated Account Management",
+            "point_1": "Single point of contact for your program",
+            "point_2": "Hands-on support from design through delivery",
+            "point_3": "Custom design and delivery options"
+          }
+        },
+        "feature_FyTQaz": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/account-manager.png",
+            "heading": "Custom design and delivery options",
+            "point_1": "Support for any size holiday program",
+            "point_2": "First-line support for your employees",
+            "point_3": "Release expired coupons"
+          }
+        },
+        "feature_kMfJ6A": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/enterprise.png",
+            "heading": "Unmatched Coverage",
+            "point_1": "Rural and urban store acceptance",
+            "point_2": "Proactive store engagement",
+            "point_3": "On call for employee or store questions"
+          }
+        },
+        "feature_7LUbab": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/money.png",
+            "heading": "Save time and money",
+            "point_1": "Corporate tax advantages",
+            "point_2": "Save time on delivery and support",
+            "point_3": "Flexible shipping & delivery options"
+          }
+        }
+      },
+      "block_order": [
+        "feature_8zMHJ7",
+        "feature_FyTQaz",
+        "feature_kMfJ6A",
+        "feature_7LUbab"
+      ],
+      "name": "Feature Boxes",
+      "settings": {
+        "title": "Why Large Enterprises Choose Perfect Feast"
+      }
+    },
+    "testimonial_slide_FVxF3U": {
+      "type": "testimonial-slide",
+      "blocks": {
+        "testimonial_FrXUp9": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "Finally, a vendor that understands our distributed workforce. Certificates work everywhere our people live.",
+            "author": "Construction Company (5,000+ employees)"
+          }
+        },
+        "testimonial_b9prmH": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "Perfect Feast handled our complex multi-location delivery flawlessly. Their rural coverage meant every employee could participate.",
+            "author": "Manufacturing Company (10,000+ employees)"
+          }
+        },
+        "testimonial_bnHEny": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "The white-glove service exceeded expectations. They managed bounced mail, employee questions, and provided detailed reporting.",
+            "author": "Healthcare System (15,000+ employees)"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_FrXUp9",
+        "testimonial_b9prmH",
+        "testimonial_bnHEny"
+      ],
+      "name": "Testimonial Slide",
+      "settings": {
+        "heading": "Enterprise Success Stories"
+      }
+    }
+  },
+  "order": [
+    "hero_with_app_form_bAWPyd",
+    "brand_logos",
+    "info_tab",
+    "gift_cards_preview",
+    "process_box_pyYnBb",
+    "feature_box_tMYVQf",
+    "testimonial_slide_FVxF3U"
+  ]
+}

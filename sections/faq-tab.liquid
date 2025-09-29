@@ -1,0 +1,201 @@
+{% comment %} 
+  Section: Tabbed FAQs (metaobjects-based)
+  Supports both tabbed view and single tab detail view.
+  Use section.settings.active_tab_handle to show only one tab's content and link other tabs. 
+{% endcomment %}
+<section id="faq-tabs-{{ section.id }}" class="py-16 bg-white">
+  <div class="container mx-auto px-4 max-w-3xl">
+    <div class="mb-10">
+      <div class="faq-tabs-heading">
+        {{ section.settings.aria_label | default: "Frequently asked questions" }}
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-center gap-6 mb-8 faq-tabs">
+      {% for block in section.blocks %}
+        {% assign tab = block.settings.tab_ref %}
+        {% if tab != blank %}
+          {% assign tab_handle = tab.handle | default: tab.id %}
+          {% if section.settings.active_tab_handle != blank %}
+            {% if tab_handle == section.settings.active_tab_handle %}
+              <button
+                type="button"
+                class="faq-tab-btn cursor-pointer flex flex-1 flex-col items-center px-8 py-6 rounded-lg shadow transition-all duration-200 bg-brandPrimary text-white active"
+                disabled
+                aria-current="true">
+                {% if tab.icon %}
+                  <span class="block overflow-hidden h-11 mt-6 mb-4">
+                    <img
+                      src="{{ tab.icon | image_url: width:88 }}"
+                      alt="{{ tab.title }}"
+                      class="faq-tab-img mx-auto mt-0 mb-5 h-22 w-auto object-cover" />
+                  </span>
+                {% endif %}
+                <span class="font-bold uppercase tracking-wide text-sm">{{ tab.title }}</span>
+              </button>
+            {% else %}
+
+              {% if block.settings.faq_page_url %}
+                <a href="{{ block.settings.faq_page_url }}" class="faq-tab-btn cursor-pointer flex flex-1 flex-col items-center px-8 py-6 rounded-lg shadow transition-all duration-200 bg-gray-100 text-gray-700 hover:bg-brandPrimary hover:text-white">
+                  {% if tab.icon %}
+                    <span class="block overflow-hidden h-11 mt-6 mb-4">
+                      <img
+                        src="{{ tab.icon | image_url: width:88 }}"
+                        alt="{{ tab.title }}"
+                        class="faq-tab-img mx-auto mt-0 mb-5 h-22 w-auto object-cover" />
+                    </span>
+                  {% endif %}
+                  <span class="font-bold uppercase tracking-wide text-sm">{{ tab.title }}</span>
+                </a>
+              {% else %}
+                <button
+                  type="button"
+                  class="faq-tab-btn cursor-pointer flex flex-1 flex-col items-center px-8 py-6 rounded-lg shadow transition-all duration-200 bg-brandPrimary text-white active"
+                  disabled
+                  aria-current="true">
+                  {% if tab.icon %}
+                    <span class="block overflow-hidden h-11 mt-6 mb-4">
+                      <img
+                        src="{{ tab.icon | image_url: width:88 }}"
+                        alt="{{ tab.title }}"
+                        class="faq-tab-img mx-auto mt-0 mb-5 h-22 w-auto object-cover" />
+                    </span>
+                  {% endif %}
+                  <span class="font-bold uppercase tracking-wide text-sm">{{ tab.title }}</span>
+                </button>
+              {% endif %}
+
+            {% endif %}
+          {% else %}
+            <button
+              type="button"
+              class="faq-tab-btn cursor-pointer flex flex-1 flex-col items-center px-8 py-6 rounded-lg shadow transition-all duration-200
+                {% if forloop.first %}bg-brandPrimary text-white active{% else %}bg-gray-100 text-gray-700{% endif %}
+                hover:bg-brandPrimary hover:text-white"
+              data-tab="{{ forloop.index0 }}">
+              {% if tab.icon %}
+                <span class="block overflow-hidden h-11 mt-6 mb-4">
+                  <img
+                    src="{{ tab.icon | image_url: width:88 }}"
+                    alt="{{ tab.title }}"
+                    class="faq-tab-img mx-auto mt-0 mb-5 h-22 w-auto object-cover" />
+                </span>
+              {% endif %}
+              <span class="font-bold uppercase tracking-wide text-sm">{{ tab.title }}</span>
+            </button>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="faq-tab-contents">
+      {% for block in section.blocks %}
+        {% assign tab = block.settings.tab_ref %}
+        {% if tab != blank %}
+          {%- assign active_handle = section.settings.active_tab_handle | to_string | strip | strip_newlines | replace: ' ', ' ' -%}
+
+          {%- assign tab_handle_clean = block.settings.tab_ref | to_string | handleize | strip | strip_newlines | replace: ' ', ' ' -%}
+          {% if section.settings.active_tab_handle != blank %}
+
+            {% if active_handle == tab_handle_clean %}
+
+              <div class="faq-tab-content" data-tab-content="{{ forloop.index0 }}">
+                {% assign faqs = tab.faq_items.value %}
+                {% if faqs %}
+                  {% for faq in faqs %}
+                    <div class="border-b border-gray-200">
+                      <button type="button" class="cursor-pointer py-4 w-full text-left font-semibold text-gray-800 flex justify-between items-center faq-question">
+                        {{ faq.question }}
+                        <svg
+                          class="w-6 h-6 text-gray-400 transition-transform duration-200"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24">
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </button>
+                      <div class="faq-answer hidden mt-2 text-gray-600">
+                        {{ faq.answers | metafield_tag }}
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  <p>No FAQs linked to this tab yet.</p>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% else %}
+            <div class="faq-tab-content {% unless forloop.first %}hidden{% endunless %}" data-tab-content="{{ forloop.index0 }}">
+              {% assign faqs = tab.faq_items.value %}
+              {% if faqs %}
+                {% for faq in faqs %}
+                  <div class="border-b border-gray-200">
+                    <button type="button" class="cursor-pointer py-4 w-full text-left font-semibold text-gray-800 flex justify-between items-center faq-question">
+                      {{ faq.question }}
+                      <svg
+                        class="w-6 h-6 text-gray-400 transition-transform duration-200"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </button>
+                    <div class="faq-answer hidden mt-2 text-gray-600">
+                      {{ faq.answers | metafield_tag }}
+                    </div>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <p>No FAQs linked to this tab yet.</p>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Tabbed FAQs",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "aria_label",
+        "label": "ARIA label",
+        "default": "<h2>Frequently asked questions</h2>"
+      }, {
+        "type": "text",
+        "id": "active_tab_handle",
+        "label": "Active Tab Handle (for tab detail page)"
+
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tab",
+        "name": "Tab",
+        "settings": [
+          {
+            "type": "metaobject",
+            "id": "tab_ref",
+            "label": "FAQ Tab",
+            "metaobject_type": "faq_tab"
+          }, {
+            "type": "url",
+            "id": "faq_page_url",
+            "label": "FAQ Page URL (for tab detail view)"
+          }
+        ]
+      }
+    ],
+    "max_blocks": 10,
+    "presets": [
+      {
+        "name": "Tabbed FAQs"
+      }
+    ]
+  }
+{% endschema %}

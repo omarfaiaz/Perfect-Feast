@@ -1,0 +1,515 @@
+<!-- sections/benefit-box.liquid -->
+
+<section class="py-16 bg-brandNeutral">
+<div class="container mx-auto px-4">
+  
+  {% if section.settings.show_heading %}
+    <div class="text-center mb-{{ section.settings.heading_margin }}">
+      <h2 class="text-{{ section.settings.heading_size }} font-{{ section.settings.heading_weight }} text-{{ section.settings.heading_color }} mb-4">
+        {{ section.settings.heading | default: 'Why Choose Our Gift Certificates?' }}
+      </h2>
+      {% if section.settings.subheading != blank %}
+        <p class="text-{{ section.settings.subheading_size }} text-{{ section.settings.subheading_color }} max-w-3xl mx-auto">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
+  
+  <div class="grid grid-cols-1 {% if section.settings.layout == 'two-column' %}lg:grid-cols-2{% elsif section.settings.layout == 'three-column' %}md:grid-cols-3{% endif %} gap-{{ section.settings.column_gap }}">
+    
+    {% for block in section.blocks %}
+      <div class="bg-{{ section.settings.card_bg_color }} rounded shadow-{{ section.settings.card_shadow_size }} p-{{ section.settings.card_padding }} {% if section.settings.enable_hover_effect %}hover:shadow-{{ section.settings.card_hover_shadow }} hover:-translate-y-1 transition-all duration-300{% endif %}" {{ block.shopify_attributes }}>
+        
+        {% if block.settings.icon_type != 'none' %}
+          <div class="mb-6">
+            {% if block.settings.icon_type == 'emoji' %}
+              <span class="text-{{ section.settings.icon_size }} block">{{ block.settings.emoji | default: '🎁' }}</span>
+            {% elsif block.settings.icon_type == 'svg' %}
+              <div class="w-{{ section.settings.icon_svg_size }} h-{{ section.settings.icon_svg_size }} text-red-500 mb-2">
+                <svg fill="currentColor" viewBox="0 0 20 20" class="w-full h-full">
+                  <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0118 5v6.75a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V13a1 1 0 00-1-1H8a1 1 0 00-1 1v.75a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V5zm7 0a1 1 0 00-2 0v4.25c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V5z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        {% if block.settings.title != blank %}
+          <h3 class="text-{{ section.settings.benefit_title_size }} font-{{ section.settings.benefit_title_weight }} text-{{ section.settings.benefit_title_color }} mb-4">
+            {{ block.settings.title }}
+          </h3>
+        {% endif %}
+        
+        <div class="text-{{ section.settings.benefit_text_size }} text-{{ section.settings.benefit_text_color }} leading-relaxed space-y-3">
+          {{ block.settings.content }}
+        </div>
+        
+        {% if block.settings.cta_text != blank and block.settings.cta_url != blank %}
+          <div class="mt-6">
+            <a href="{{ block.settings.cta_url }}" 
+               class="inline-flex items-center px-4 py-2 text-sm font-medium text-{{ section.settings.cta_text_color }} bg-{{ section.settings.cta_bg_color }} hover:bg-{{ section.settings.cta_hover_color }} rounded transition-colors duration-200">
+              {{ block.settings.cta_text }}
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+    
+  </div>
+  
+  <!-- Bottom CTA Section -->
+  {% if section.settings.show_bottom_cta %}
+    <div class="text-center mt-{{ section.settings.section_padding }}">
+      {% if section.settings.bottom_cta_heading != blank %}
+        <h3 class="text-2xl font-bold text-{{ section.settings.heading_color }} mb-4">
+          {{ section.settings.bottom_cta_heading }}
+        </h3>
+      {% endif %}
+      
+      {% if section.settings.bottom_cta_text != blank %}
+        <p class="text-{{ section.settings.subheading_color }} mb-6 max-w-2xl mx-auto">
+          {{ section.settings.bottom_cta_text }}
+        </p>
+      {% endif %}
+      
+      {% if section.settings.bottom_cta_button_text != blank and section.settings.bottom_cta_button_url != blank %}
+        <a href="{{ section.settings.bottom_cta_button_url }}" 
+           class="inline-block px-8 py-3 bg-brandPrimary hover:from-red-600 hover:to-red-700 text-white font-bold rounded-lg transition-all duration-200 transform hover:-translate-y-1 hover:shadow-lg">
+          {{ section.settings.bottom_cta_button_text }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+  
+</div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Benefit Box",
+  "tag": "section",
+  "class": "gift-certificate-benefits",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "two-column", "label": "Two Columns" },
+        { "value": "single-column", "label": "Single Column" },
+        { "value": "three-column", "label": "Three Columns" }
+      ],
+      "default": "two-column"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show section heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Choose Our Gift Certificates?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover the advantages of our premium gift certificate program"
+    },
+    {
+      "type": "header",
+      "content": "Bottom CTA Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_cta",
+      "label": "Show bottom CTA section",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "bottom_cta_heading",
+      "label": "Bottom CTA - Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "bottom_cta_text",
+      "label": "Bottom CTA - Text"
+    },
+    {
+      "type": "text",
+      "id": "bottom_cta_button_text",
+      "label": "Bottom CTA - Button Text"
+    },
+    {
+      "type": "url",
+      "id": "bottom_cta_button_url",
+      "label": "Bottom CTA - Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Styling Options"
+    },
+    {
+      "type": "select",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "gray-50", "label": "Light Gray" },
+        { "value": "red-50", "label": "Light Red" },
+        { "value": "blue-50", "label": "Light Blue" }
+      ],
+      "default": "white"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_card_shadow",
+      "label": "Show card shadows",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "card_shadow_size",
+      "label": "Card shadow size",
+      "options": [
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "Extra Large" }
+      ],
+      "default": "lg"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover_effect",
+      "label": "Enable hover effects",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "card_hover_shadow",
+      "label": "Hover shadow size",
+      "options": [
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "Extra Large" },
+        { "value": "2xl", "label": "2X Large" }
+      ],
+      "default": "xl"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "2xl", "label": "Small" },
+        { "value": "3xl", "label": "Medium" },
+        { "value": "4xl", "label": "Large" },
+        { "value": "5xl", "label": "Extra Large" }
+      ],
+      "default": "4xl"
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "options": [
+        { "value": "semibold", "label": "Semibold" },
+        { "value": "bold", "label": "Bold" },
+        { "value": "extrabold", "label": "Extra Bold" }
+      ],
+      "default": "bold"
+    },
+    {
+      "type": "select",
+      "id": "heading_color",
+      "label": "Heading color",
+      "options": [
+        { "value": "gray-900", "label": "Dark Gray" },
+        { "value": "black", "label": "Black" },
+        { "value": "red-600", "label": "Red" },
+        { "value": "blue-600", "label": "Blue" }
+      ],
+      "default": "gray-900"
+    },
+    {
+      "type": "select",
+      "id": "benefit_title_size",
+      "label": "Benefit title size",
+      "options": [
+        { "value": "lg", "label": "Small" },
+        { "value": "xl", "label": "Medium" },
+        { "value": "2xl", "label": "Large" }
+      ],
+      "default": "xl"
+    },
+    {
+      "type": "select",
+      "id": "benefit_title_weight",
+      "label": "Benefit title weight",
+      "options": [
+        { "value": "medium", "label": "Medium" },
+        { "value": "semibold", "label": "Semibold" },
+        { "value": "bold", "label": "Bold" }
+      ],
+      "default": "semibold"
+    },
+    {
+      "type": "select",
+      "id": "benefit_title_color",
+      "label": "Benefit title color",
+      "options": [
+        { "value": "gray-900", "label": "Dark Gray" },
+        { "value": "black", "label": "Black" },
+        { "value": "red-600", "label": "Red" },
+        { "value": "blue-600", "label": "Blue" }
+      ],
+      "default": "gray-900"
+    },
+    {
+      "type": "select",
+      "id": "benefit_text_size",
+      "label": "Benefit text size",
+      "options": [
+        { "value": "sm", "label": "Small" },
+        { "value": "base", "label": "Medium" },
+        { "value": "lg", "label": "Large" }
+      ],
+      "default": "base"
+    },
+    {
+      "type": "select",
+      "id": "benefit_text_color",
+      "label": "Benefit text color",
+      "options": [
+        { "value": "gray-600", "label": "Medium Gray" },
+        { "value": "gray-700", "label": "Dark Gray" },
+        { "value": "gray-800", "label": "Darker Gray" }
+      ],
+      "default": "gray-700"
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "select",
+      "id": "icon_size",
+      "label": "Emoji icon size",
+      "options": [
+        { "value": "3xl", "label": "Small" },
+        { "value": "4xl", "label": "Medium" },
+        { "value": "5xl", "label": "Large" },
+        { "value": "6xl", "label": "Extra Large" }
+      ],
+      "default": "4xl"
+    },
+    {
+      "type": "select",
+      "id": "icon_svg_size",
+      "label": "SVG icon size",
+      "options": [
+        { "value": "8", "label": "Small" },
+        { "value": "10", "label": "Medium" },
+        { "value": "12", "label": "Large" },
+        { "value": "16", "label": "Extra Large" }
+      ],
+      "default": "10"
+    },
+    {
+      "type": "header",
+      "content": "CTA Buttons"
+    },
+    {
+      "type": "select",
+      "id": "cta_bg_color",
+      "label": "CTA background color",
+      "options": [
+        { "value": "red-500", "label": "Red" },
+        { "value": "blue-500", "label": "Blue" },
+        { "value": "green-500", "label": "Green" },
+        { "value": "gray-800", "label": "Dark Gray" }
+      ],
+      "default": "red-500"
+    },
+    {
+      "type": "select",
+      "id": "cta_hover_color",
+      "label": "CTA hover color",
+      "options": [
+        { "value": "red-600", "label": "Dark Red" },
+        { "value": "blue-600", "label": "Dark Blue" },
+        { "value": "green-600", "label": "Dark Green" },
+        { "value": "gray-900", "label": "Darker Gray" }
+      ],
+      "default": "red-600"
+    },
+    {
+      "type": "select",
+      "id": "cta_text_color",
+      "label": "CTA text color",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "gray-100", "label": "Light Gray" }
+      ],
+      "default": "white"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 8,
+      "max": 20,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin",
+      "label": "Heading bottom margin",
+      "min": 8,
+      "max": 16,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 4,
+      "max": 12,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 4,
+      "max": 12,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "subheading_size",
+      "label": "Subheading size",
+      "options": [
+        { "value": "base", "label": "Small" },
+        { "value": "lg", "label": "Medium" },
+        { "value": "xl", "label": "Large" }
+      ],
+      "default": "lg"
+    },
+    {
+      "type": "select",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "options": [
+        { "value": "gray-600", "label": "Medium Gray" },
+        { "value": "gray-700", "label": "Dark Gray" },
+        { "value": "red-500", "label": "Red" },
+        { "value": "blue-500", "label": "Blue" }
+      ],
+      "default": "gray-600"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Add your benefit description here. Use this space to highlight the advantages of your product or service.</p>"
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon Type",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "emoji", "label": "Emoji" },
+            { "value": "svg", "label": "SVG Icon" }
+          ],
+          "default": "emoji"
+        },
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji",
+          "default": "🎁"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "CTA URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefit Box",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Corporate gift certificates that are more convenient for the employee:",
+            "content": "<p>• Good on any brand.</p><p>• Good on any variety (fresh, frozen, whole, portions, sliced, etc.)</p><p>• Recipient selects the turkey or ham preferred at the time and place that are most convenient.</p>",
+            "icon_type": "emoji",
+            "emoji": "🎁"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Substantial pricing advantage with our corporate gift certificates vs actual turkeys or hams:",
+            "content": "<p>• Average holiday retail turkey feature prices are expected to be low – $.79 to $.99/lb. So our $15 certificate, for example, could get a turkey 15-19 lbs, or even larger if feature prices are lower, as they often are.</p><p>• On the other hand, wholesale frozen turkey prices could be over $1.10/lb. The same size turkey could cost you over $20, plus your own handling costs</p>",
+            "icon_type": "emoji",
+            "emoji": "💰"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

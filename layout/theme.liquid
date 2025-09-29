@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+  {% render 'meta-tags' %}
+    {% # Inlined CSS Variables %}
+    {% render 'css-variables' %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+
+    {% # Social, title, etc. %}
+
+    {{ content_for_header }}
+
+
+    {% if template == 'page.enterprise-packages' or template == 'page.contact' or template == 'page.shrm-template' or template == 'page.request-reminder' %}
+      {% render 'preloader' %}
+    {% endif %}
+
+
+    {{ 'app.css' | asset_url | stylesheet_tag: preload: true }}
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="+ZuppUWu9XLBXH2HsHWUMA" async></script>
+  </head>
+
+  <body>
+    {% sections 'header-group' %}
+
+    {{ content_for_layout }}
+
+    {% sections 'footer-group' %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+    {% comment %} Store Locator Scripts {% endcomment %}
+    <script src="//cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
+  </script>
+    {% comment %} Store Locator Scripts Ends{% endcomment %}
+    {{ 'app.js' | asset_url | script_tag }}
+  </body>
+</html>

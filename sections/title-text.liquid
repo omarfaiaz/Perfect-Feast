@@ -1,0 +1,40 @@
+<!-- sections/title-text.liquid -->
+{% comment %} 
+                                    Title with Text Section
+                                    Features: Centered title with descriptive text below
+{% endcomment %}
+
+<section class="pb-12">
+  <div class="container mx-auto px-4">
+    <div class="lg:w-[640px] w-auto p-5 mx-auto mb-6 lg:mb-10  -mt-[52px] relative z-10 bg-gradient-to-b from-[#ededed] to-[#ffffff] flex items-center justify-center">
+      <div class="title-with-text__header">{{ section.settings.title }}</div>
+    </div>
+    <div class="text-lg">{{ section.settings.text }}</div>
+  </div>
+
+</section>
+
+
+{% schema %}
+  {
+    "name": "Title with Text",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Title",
+        "default": "<p>Your Title Here</p>"
+      }, {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Your descriptive text goes here. You can provide more details about the title.</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Title with Text"
+      }
+    ]
+  }
+{% endschema %}

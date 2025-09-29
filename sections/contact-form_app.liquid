@@ -1,0 +1,204 @@
+<!-- sections/contact-form-app.liquid -->
+
+<div class="bg-gray-50 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <div class="mb-8">
+    <h2 class="text-center text-brandPrimary">
+    {{ section.settings.main_heading | default: 'Contact Us' | upcase }}
+  </h2>
+  </div>
+
+  
+    <div class="grid grid-cols-1 {% if section.settings.show_contact_info %}lg:grid-cols-2{% endif %} gap-8">
+
+    
+      <div class="{% if section.settings.show_contact_info %}order-1{% endif %}">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+        {% if section.settings.show_heading %}
+      <div class="mb-12">
+        <h3 class="text-brandPrimary mb-4">
+          {{ section.settings.heading | default: 'HAVE QUESTIONS? NEED HELP?' }}
+        </h3>
+        {% if section.settings.subheading != blank %}
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
+            {{ section.settings.subheading }}
+          </p>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            {{ section.settings.description }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              {% render block %}
+            {% endfor %}
+          {% else %}
+            {% if section.settings.embed_form != blank %}
+              <div class="embedded-form">
+                {{ section.settings.embed_form }}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+
+     
+      {% if section.settings.show_contact_info %}
+        <div class="order-2">
+          <div class="bg-brandPrimary rounded-xl shadow-lg p-8 h-full text-white">
+            <h3 class="text-xl font-bold mb-6">
+              {{ section.settings.contact_info_heading | default: 'CONTACT INFO' }}
+            </h3>
+
+            <div class="space-y-6">
+              {% if section.settings.contact_address != blank %}
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 p-2 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4 mt-1">
+                    {% render 'location-icon' %}
+                  </div>
+                  <div class="text-white">
+                    <h4 class="font-semibold mb-1">Address:</h4>
+                    <p class="leading-relaxed opacity-90">{{ section.settings.contact_address }}</p>
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.contact_email != blank %}
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 p-2 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4 mt-1">
+                    <svg class="w-4 h-4 text-white" fill="#ED2129" viewBox="0 0 20 20">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                    </svg>
+                  </div>
+                  <div class="text-white">
+                    <h4 class="font-semibold mb-1">Email:</h4>
+                    <a href="mailto:{{ section.settings.contact_email }}" class="!text-white">
+                      {{ section.settings.contact_email }}
+                    </a>
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.contact_phone != blank %}
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 p-2 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4 mt-1">
+                    <svg class="w-4 h-4 text-white" fill="#ED2129" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                    </svg>
+                  </div>
+                  <div class="text-white">
+                    <h4 class="font-semibold mb-1">Call Us:</h4>
+                    <a href="tel:{{ section.settings.contact_phone | replace: ' ', '' | replace: '-', '' | replace: '(', '' | replace: ')', '' }}" class="!text-white">
+                      {{ section.settings.contact_phone }}
+                    </a>
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.show_social_links %}
+  <div class="pt-4 border-t border-white border-opacity-20">
+    <h4 class="font-semibold mb-3">Follow Us:</h4>
+    <div class="flex flex-wrap gap-3">
+      {% if settings.social_facebook != blank %}
+        <a href="{{ settings.social_facebook }}" class="w-8 h-8 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center hover:bg-opacity-30 transition-colors duration-200" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      {% endif %}
+      
+      {% if settings.social_twitter != blank %}
+        <a href="{{ settings.social_twitter }}" class="w-8 h-8 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center hover:bg-opacity-30 transition-colors duration-200" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+        </a>
+      {% endif %}
+      
+      {% if settings.social_instagram != blank %}
+        <a href="{{ settings.social_instagram }}" class="w-8 h-8 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center hover:bg-opacity-30 transition-colors duration-200" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      {% endif %}
+      
+      {% if settings.social_youtube != blank %}
+        <a href="{{ settings.social_youtube }}" class="w-8 h-8 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center hover:bg-opacity-30 transition-colors duration-200" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+        </a>
+      {% endif %}
+      
+      {% if settings.social_linkedin != blank %}
+        <a href="{{ settings.social_linkedin }}" class="w-8 h-8 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center hover:bg-opacity-30 transition-colors duration-200" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+        </a>
+      {% endif %}
+      
+      {% if settings.social_pinterest != blank %}
+        <a href="{{ settings.social_pinterest }}" class="w-8 h-8 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center hover:bg-opacity-30 transition-colors duration-200" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact (App form)",
+  "tag": "section",
+  "class": "contact-form-section",
+  "settings": [
+    { "type": "header",
+     "content": "Section Settings" 
+    },
+    { "type": 
+    "checkbox", "id": "show_heading", "label": "Show section heading", "default": true },
+    {"type": "text", "id": "main_heading", "label": "Main heading (above form)", "default": "Contact Us"},
+    { "type": "text", "id": "heading", "label": "Heading", "default": "HAVE QUESTIONS? NEED HELP?" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Type your Question or Comment below." },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "We promise your personal information will not be given to anyone else without your permission." },
+
+    { "type": "header", "content": "Privacy & Security (shown when no app block yet)" },
+    { "type": "checkbox", "id": "show_privacy_notice", "label": "Show privacy notice placeholder", "default": true },
+    { "type": "richtext", "id": "privacy_notice", "label": "Privacy notice text", "default": "<p>We promise your personal information will not be given to anyone else without your permission.</p>" },
+
+    { "type": "header", "content": "Contact Information" },
+    {
+      "type": "html",
+      "id": "embed_form",
+      "label": "Embed form code",
+      "info": "If you don't want to use an app block, you can paste your form embed code here."
+    },
+    { "type": "checkbox", "id": "show_contact_info", "label": "Show contact information panel", "default": true },
+    { "type": "text", "id": "contact_info_heading", "label": "Contact info heading", "default": "CONTACT INFO" },
+    { "type": "textarea", "id": "contact_address", "label": "Address", "default": "461 East 1000 South, Suite B\nPleasant Grove, UT 84062" },
+    { "type": "text", "id": "contact_email", "label": "Email", "default": "info@perfectgifts.com" },
+    { "type": "text", "id": "contact_phone", "label": "Phone", "default": "801-569-2381" },
+    { "type": "checkbox", "id": "show_social_links", "label": "Show social media links", "default": false }
+
+  ],
+  "blocks": [
+    { "type": "@app" }
+    
+  ],
+  "max_blocks": 1,
+  "presets": [
+    {
+      "name": "Contact (App form)",
+      "settings": {
+        "show_heading": true,
+        "show_contact_info": true
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,389 @@
+<!-- sections/icon-boxes.liquid -->
+{% comment %} 
+                        Icon Boxes Section
+                        Features: Responsive grid, customizable columns, image icons, centered button 
+{% endcomment %}
+
+{%- liquid
+  assign desktop_columns = section.settings.desktop_columns | default: 3
+  assign tablet_columns = 2
+  assign mobile_columns = 1
+
+  case desktop_columns
+    when 2
+      assign desktop_class = 'lg:grid-cols-2'
+    when 3
+      assign desktop_class = 'lg:grid-cols-3'
+    when 4
+      assign desktop_class = 'lg:grid-cols-4'
+    when 5
+      assign desktop_class = 'lg:grid-cols-5'
+    when 6
+      assign desktop_class = 'lg:grid-cols-6'
+    else
+      assign desktop_class = 'lg:grid-cols-3'
+  endcase
+
+  assign bg_color = section.settings.background_color | default: '#FFFFFF'
+-%}
+
+<section class="py-12 lg:py-16" style="background-color: {{ bg_color }};">
+  <div class="container mx-auto px-4 max-w-7xl">
+
+    <!-- Section Header -->
+    {% if section.settings.title != blank or section.settings.description != blank %}
+      <div class="text-center mb-8 lg:mb-12">
+        {% if section.settings.title != blank %}
+          <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            {{ section.settings.description }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Icon Boxes Grid -->
+    {% if section.blocks.size > 0 %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-{{ desktop_columns }} gap-6 lg:gap-8">
+        {% for block in section.blocks %}
+          <div class="icon-box text-center py-8 px-5 rounded-lg shadow border border-[#e9ecef] bg-[#F8F9FA]" {{ block.shopify_attributes }}>
+
+            <!-- Icon -->
+            <div class="flex justify-center mb-4">
+              {% if block.settings.icon != blank %}
+                <div class="w-18 h-18 p-5 shadow bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  {{ block.settings.icon | image_url: width: 80 | image_tag: 
+ loading: 'lazy',
+ class: 'max-w-full max-h-full object-contain',
+ alt: block.settings.title | default: 'Icon'
+                  }}
+                </div>
+
+              {% endif %}
+            </div>
+
+            <!-- Content -->
+            <div class="icon-box-content">
+              {% if block.settings.title != blank %}
+                <h4 class="text-lg lg:text-xl font-semibold text-gray-800 mb-3">
+                  {{ block.settings.title }}
+                </h4>
+              {% endif %}
+
+              {% if block.settings.description != blank %}
+                <p class="text-gray-600 leading-relaxed">
+                  {{ block.settings.description }}
+                </p>
+              {% endif %}
+
+              {% if block.settings.link != blank and block.settings.link_text != blank %}
+                <div class="mt-4">
+                  <a
+                    href="{{ block.settings.link }}"
+                    class="inline-flex items-center text-red-600 hover:text-red-700 font-medium transition-colors duration-200"
+                    {% if block.settings.open_new_tab %}
+                    target="_blank"
+                    rel="noopener"
+                    {% endif %}>
+                    {{ block.settings.link_text }}
+                    <svg
+                      class="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Section Button -->
+      {% if section.settings.button_text != blank %}
+        <div class="text-center mt-8 lg:mt-12">
+          <a
+            href="{{ section.settings.button_url | default: '#' }}"
+            class="inline-flex items-center px-6 py-3 font-semibold rounded-md transition-colors duration-300"
+            style="background-color: {{ section.settings.button_background_color | default: '#ED2129' }}; color: {{ section.settings.button_text_color | default: '#FFFFFF' }};"
+            onmouseover="this.style.backgroundColor='{{ section.settings.button_hover_color | default: '#C01E25' }}'"
+            onmouseout="this.style.backgroundColor='{{ section.settings.button_background_color | default: '#ED2129' }}'"
+            {% if section.settings.button_open_new_tab %}
+            target="_blank"
+            rel="noopener"
+            {% endif %}>
+            {{ section.settings.button_text }}
+            {% if section.settings.show_button_arrow %}
+              <svg
+                class="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+    {% else %}
+      <!-- Empty state -->
+      <div class="text-center py-12">
+        <div class="max-w-md mx-auto">
+          <div class="mb-4">
+            <svg
+              class="mx-auto h-12 w-12 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">No icon boxes added yet</h3>
+          <p class="text-gray-500">Add icon boxes to showcase your key features and services.</p>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Icon Boxes",
+    "tag": "section",
+    "class": "icon-boxes-section",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section title",
+        "default": "Save Time and Money with Our Services"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Section description",
+        "default": "Customize your gifts and delivery for a richer employee experience"
+      },
+      {
+        "type": "header",
+        "content": "Layout Settings"
+      }, {
+        "type": "select",
+        "id": "desktop_columns",
+        "label": "Desktop columns",
+        "options": [
+          {
+            "value": "2",
+            "label": "2 columns"
+          },
+          {
+            "value": "3",
+            "label": "3 columns"
+          },
+          {
+            "value": "4",
+            "label": "4 columns"
+          },
+          {
+            "value": "5",
+            "label": "5 columns"
+          }, {
+            "value": "6",
+            "label": "6 columns"
+          }
+        ],
+        "default": "3",
+        "info": "Desktop columns. Tablet is always 2 columns, mobile is 1 column."
+      }, {
+        "type": "header",
+        "content": "Section Styling"
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#FFFFFF",
+        "info": "Set the section background color"
+      }, {
+        "type": "header",
+        "content": "Section Button"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text",
+        "info": "Leave empty to hide the button"
+      }, {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button link"
+      }, {
+        "type": "checkbox",
+        "id": "button_open_new_tab",
+        "label": "Open button link in new tab",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "show_button_arrow",
+        "label": "Show arrow icon in button",
+        "default": true
+      }, {
+        "type": "color",
+        "id": "button_background_color",
+        "label": "Button background color",
+        "default": "#ED2129"
+      }, {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button text color",
+        "default": "#FFFFFF"
+      }, {
+        "type": "color",
+        "id": "button_hover_color",
+        "label": "Button hover color",
+        "default": "#C01E25"
+      }, {
+        "type": "header",
+        "content": "Section Settings"
+      }, {
+        "type": "text",
+        "id": "section_id",
+        "label": "Section ID",
+        "info": "Optional: Add a custom ID for this section"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "icon_box",
+        "name": "Icon Box",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Icon"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon image",
+            "info": "Upload an icon image. Recommended size: 80x80px"
+          },
+          {
+            "type": "header",
+            "content": "Content"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Design Your Gift"
+          }, {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Certificate values and types. Custom branding, sizes, and messaging. Delivery methods, locations, and timing."
+          }, {
+            "type": "header",
+            "content": "Optional Link"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link URL"
+          }, {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link text",
+            "default": "Learn more"
+          }, {
+            "type": "checkbox",
+            "id": "open_new_tab",
+            "label": "Open link in new tab",
+            "default": false
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Icon Boxes",
+        "blocks": [
+          {
+            "type": "icon_box",
+            "settings": {
+              "title": "Design Your Gift",
+              "description": "Certificate values and types. Custom branding, sizes, and messaging. Delivery methods, locations, and timing."
+            }
+          }, {
+            "type": "icon_box",
+            "settings": {
+              "title": "Choose Shipping Method",
+              "description": "Bulk ship to your office. Distribute to multiple locations. Send to home addresses."
+            }
+          }, {
+            "type": "icon_box",
+            "settings": {
+              "title": "We Handle Everything Else",
+              "description": "Process, shipping, and delivery. Employee support and questions. Source-back meal management."
+            }
+          }
+        ],
+        "settings": {
+          "title": "Save Time and Money with Our Services",
+          "description": "Customize your gifts and delivery for a richer employee experience",
+          "desktop_columns": "3",
+          "background_color": "#FFFFFF"
+        }
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  /* Custom styles for icon boxes section */
+  .icon-boxes-section .icon-box {
+    transition: transform 0.3s ease;
+  }
+
+  .icon-boxes-section .icon-box:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Custom grid classes for 5 columns */
+  @media (min-width: 1024px) {
+    .lg\:grid-cols-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  /* Link hover effects */
+  .icon-boxes-section a svg {
+    transition: transform 0.2s ease;
+  }
+
+  .icon-boxes-section a:hover svg {
+    transform: translateX(2px);
+  }
+</style>

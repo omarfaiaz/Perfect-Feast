@@ -1,0 +1,67 @@
+{% style %}
+
+  @font-face {
+    font-family: Mokoko;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("{{ 'Mokoko-Bd.otf' | asset_url }}") format("opentype");
+  }
+
+  @font-face {
+    font-family: Mokoko;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("{{ 'Mokoko-Rg.otf' | asset_url }}") format("opentype");
+  }
+
+  @font-face {
+    font-family: Mokoko;
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url("{{ 'Mokoko-Th.otf' | asset_url }}") format("opentype");
+  }
+
+  @font-face {
+    font-family: Campton;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("{{ 'Campton-Bold.otf' | asset_url }}") format("opentype");
+  }
+
+  @font-face {
+    font-family: Campton;
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url("{{ 'Campton-Light.otf' | asset_url }}") format("opentype");
+  }
+
+  @font-face {
+    font-family: Campton;
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+    src: url("{{ 'Campton-LightItalic.otf' | asset_url }}") format("opentype");
+  }
+
+  :root {
+    --color-primary: {{ settings.color_primary }};
+    --color-secondary: {{ settings.color_secondary }};
+    --color-neutral: {{ settings.color_neutral }};
+    --color-accent: {{ settings.color_accent }};
+
+    /* Set element colors based on selections */
+    --body-background-color: {{ settings.color_background }};
+    --body-text-color: {{ settings.color_text }};
+    --primary-button-background-color: {{ settings.button_primary_bg }};
+    --primary-button-text-color: {{ settings.button_primary_text }};
+    --secondary-button-background-color: {{ settings.button_secondary_bg }};
+    --secondary-button-text-color: {{ settings.button_secondary_text }};
+  }
+
+
+{% endstyle %}

@@ -1,0 +1,221 @@
+<!-- sections/fancy-brand-logos.liquid -->
+{% comment %} 
+                    Fancy Brand Logos Section
+                    Features: Responsive logo grid, customizable columns, dynamic blocks 
+{% endcomment %}
+
+
+<section class="py-12 lg:py-16" style="background-color: {{ section.settings.background_color | default: '#F8F9FA' }};">
+  <div class="container mx-auto px-4 max-w-7xl">
+
+    <!-- Section Header -->
+    {% if section.settings.title != blank or section.settings.description != blank %}
+      <div class="text-center mb-8 lg:mb-12">
+        {% if section.settings.title != blank %}
+          <h2 class="text-2xl lg:text-3xl max-w-4xl mx-auto font-bold text-gray-800 mb-4">
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            {{ section.settings.description }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Logos Grid -->
+    {% if section.blocks.size > 0 %}
+      <div class="flex flex-wrap gap-4 justify-center items-center">
+        {% for block in section.blocks %}
+          <div class="logo-item w-[47%] lg:w-auto" {{ block.shopify_attributes }}>
+            {% if block.settings.logo != blank %}
+              {% if block.settings.link != blank %}
+                <a
+                  href="{{ block.settings.link }}"
+                  class="block"
+                  {% if block.settings.open_new_tab %}
+                  target="_blank"
+                  rel="noopener"
+                  {% endif %}>
+              {% endif %}
+
+              <div class="flex items-center justify-center h-16 lg:h-20 px-4 bg-white shadow rounded-lg">
+                {{ block.settings.logo | image_url: width: 200 | image_tag:
+ loading: 'lazy',
+ class: 'max-h-full  h-20 w-auto max-w-36 object-contain filter grayscale',
+ alt: block.settings.company_name | default: 'Brand logo'
+                }}
+              </div>
+
+              {% if block.settings.company_name != blank and section.settings.show_company_names %}
+                <p class="text-center text-sm text-gray-600 mt-2 font-medium">
+                  {{ block.settings.company_name }}
+                </p>
+              {% endif %}
+
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            {% else %}
+              <!-- Placeholder for empty logo -->
+              <div class="flex items-center justify-center h-16 lg:h-20 px-4 bg-gray-100 rounded border-2 border-dashed border-gray-300">
+                <span class="text-gray-400 text-sm">Logo</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <div class="max-h-full flex items-center text-center justify-center bg-white shadow rounded-lg h-20 w-auto max-w-36 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                <span>And 10,000+ more</span>
+              </div>
+      </div>
+    {% endif %}
+{% if section.settings.button_text != blank and section.settings.button_link != blank %}
+    <div class="flex justify-center items-center mt-12">
+            <a href="{{ section.settings.button_link }}" class=" btn btn--primary">
+            {{ section.settings.button_text }}
+            </a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Fancy Brand Logos",
+    "tag": "section",
+    "class": "fancy-brand-logos-section",
+    "max_blocks": 50,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section title",
+        "default": "Unmatched service from Main Street to Fortune 500"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Section description",
+        "default": "Over 5 million gifts appreciated by companies and HR teams nationwide"
+      },
+      {
+        "id": "button_text",
+        "type": "text",
+        "label": "Button text",
+        "default": "See Store Finder"
+      },
+      {
+        "id": "button_link",
+        "type": "url",
+        "label": "Button link URL",
+        "default": "/"
+      },
+      {
+        "type": "header",
+        "content": "Layout Settings"
+      }, {
+        "type": "checkbox",
+        "id": "show_company_names",
+        "label": "Show company names below logos",
+        "default": false
+      }, {
+        "type": "header",
+        "content": "Styling"
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#F8F9FA"
+      }, {
+        "type": "header",
+        "content": "Section Settings"
+      }, {
+        "type": "text",
+        "id": "section_id",
+        "label": "Section ID",
+        "info": "Optional: Add a custom ID for this section"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo",
+        "name": "Brand Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo image",
+            "info": "Recommended size: 200x100px or similar aspect ratio"
+          }, {
+            "type": "text",
+            "id": "company_name",
+            "label": "Company name",
+            "info": "Will be used for alt text and can display below logo if enabled"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link URL",
+            "info": "Optional: Make the logo clickable"
+          }, {
+            "type": "checkbox",
+            "id": "open_new_tab",
+            "label": "Open link in new tab",
+            "default": true
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Fancy Brand Logos",
+        "blocks": [
+          {
+            "type": "logo",
+            "settings": {
+              "company_name": "Advocate Aurora"
+            }
+          },
+          {
+            "type": "logo",
+            "settings": {
+              "company_name": "AVI Food Systems"
+            }
+          },
+          {
+            "type": "logo",
+            "settings": {
+              "company_name": "Holiday Inn"
+            }
+          },
+          {
+            "type": "logo",
+            "settings": {
+              "company_name": "Sanford Health"
+            }
+          }, {
+            "type": "logo",
+            "settings": {
+              "company_name": "Apex Advertising"
+            }
+          }, {
+            "type": "logo",
+            "settings": {
+              "company_name": "Harbor Distributing"
+            }
+          }
+        ],
+        "settings": {
+          "title": "Unmatched service from Main Street to Fortune 500",
+          "description": "Over 5 million gifts appreciated by companies and HR teams nationwide",
+         
+        }
+      }
+    ]
+  }
+{% endschema %}

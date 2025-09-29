@@ -1,0 +1,267 @@
+{% comment %} Notice Bar {% endcomment %}
+{% if section.settings.enable_bottom_bar %}
+  <div class="notice-bar bg-[#b99b89] text-white text-center py-2 text-sm">
+    <div class="container mx-auto px-4">
+      {{ section.settings.notice_text }}
+    </div>
+  </div>
+{% endif %}
+
+<header class="site-header bg-white shadow-sm relative z-50">
+  <div class="w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-full xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn lg:hidden">
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <!-- Mobile Menu -->
+      <div id="mobile-flyout-menu" class="fixed inset-0 z-50 bg-black bg-opacity-40 lg:hidden hidden">
+        <div class="bg-white w-4/5 max-w-xs flex flex-col h-full shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto" id="flyout-panel">
+          <div class="flex items-center justify-between px-4 py-4 border-b">
+            <span class="text-lg font-bold text-brandPrimary">Menu</span>
+            <button id="close-flyout" class="text-gray-600 hover:text-brandPrimary">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <nav class="py-2">
+            <ul>
+              {% assign menu_items = linklists[section.settings.menu].links %}
+              {% for item in menu_items %}
+                <li class="mb-2 relative border-b border-b-gray-200 {% if item.links.size > 0 %}toggle-submenu {% endif %}" data-target="submenu-{{ forloop.index }}">
+                  {% if item.links.size > 0 %}
+                    <span class="py-2 px-4 block text-gray-700 font-semibold hover:text-brandPrimary transition-colors duration-150">
+                      {{ item.title }}</span>
+                    <button class="absolute top-4 right-5 transform -translate-y-1/2 text-left text-xs text-brandPrimary font-bold focus:outline-none">
+                      <div class="transition-transform duration-200">
+                        {% render 'arrow-down__red'
+                          , width: '16'
+                          , height: '16' %}
+                      </div>
+                    </button>
+                    <!-- Second Layer Menu -->
+                    <ul id="submenu-{{ forloop.index }}" class="hidden">
+                      {% for sub_link in item.links %}
+                        <li class="relative mb-2 pl-8 pr-4 border-b border-b-gray-200 {% if item.links.size > 0 %}toggle-submenu {% endif %}" data-target="child-submenu-{{ forloop.parentloop.index }}-{{ forloop.index }}">
+
+                          {% if sub_link.links.size > 0 %}
+                            <span href="{{ sub_link.url }}" class="block py-2 px-4 text-gray-600 hover:text-brandPrimary transition-colors duration-150">{{ sub_link.title }}</span>
+                            <button class="toggle-submenu absolute top-6 right-5 transform -translate-y-1/2 text-left text-xs text-brandPrimary font-bold focus:outline-none">
+                              <div class="transition-transform duration-200">
+                                {% render 'arrow-down__red'
+                                  , width: '14'
+                                  , height: '14' %}
+                              </div>
+                            </button>
+
+                            <!-- Third Layer Menu -->
+                            <ul id="child-submenu-{{ forloop.parentloop.index }}-{{ forloop.index }}" class="ml-4 hidden">
+                              {% for child in sub_link.links %}
+                                <li class="">
+                                  <a href="{{ child.url }}" class="block py-2 px-2 text-gray-500 hover:text-brandPrimary transition-colors duration-150">{{ child.title }}</a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+
+
+                          {% else %}
+                            <a href="{{ sub_link.url }}" class="block px-4 py-2 text-gray-600 hover:text-brandPrimary transition-colors duration-150">{{ sub_link.title }}</a>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <a href="{{ item.url }}" class="block px-4 py-2 text-gray-700 font-semibold hover:text-brandPrimary transition-colors duration-150">
+                      {{ item.title }}</a>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+
+          <!-- Contact Us Button -->
+          <a href="{{ section.settings.contact_link | default: '/contact-us' }}" class="btn btn--primary text-center mx-3 text-sm lg:text-base font-normal">
+            {{ section.settings.contact_text | default: 'Contact Us' }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Ends -->
+      <!-- Logo -->
+      <div class="logo flex-shrink-0">
+        <a href="{{ routes.root_url }}" class="block">
+          {% if section.settings.logo %}
+            {{ section.settings.logo | image_url: width: 232 | image_tag: class: 'h-auto max-h-11 w-40 lg:w-auto', alt: shop.name }}
+          {% else %}
+            <span class="text-2xl font-bold text-brandPrimary">Perfect Feast</span>
+          {% endif %}
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="main-navigation flex-1 mx-8 hidden lg:block">
+        <ul class="flex items-center justify-center space-x-5">
+          {% assign menu_items = linklists[section.settings.menu].links %}
+          {% for item in menu_items %}
+            <li class="nav-item relative {% if item.links.size > 0 %}parent-link{% endif %}">
+              <a href="{{ item.url }}" class="nav-link flex items-center text-gray-600 hover:text-brandPrimary font-semibold text-sm uppercase tracking-wide transition-colors duration-200">
+                {{ item.title }}
+                {% if item.links.size > 0 %}
+                  <svg
+                    class="w-3 h-3 ml-1 transition-transform duration-200"
+                    fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd" />
+                  </svg>
+                {% endif %}
+              </a>
+              {% if item.links.size > 0 %}
+                <div class="submenu absolute top-full left-0 bg-white shadow-lg border border-gray-200 min-w-48 opacity-0 invisible transition-all duration-200 z-50 mt-1">
+                  <ul>
+                    {% for sub_link in item.links %}
+                      <li class="{% if sub_link.links.size > 0 %}child-parent-link{% endif %}">
+                        <a href="{{ sub_link.url }}" class="block relative px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-brandPrimary transition-colors duration-150">{{ sub_link.title }}
+
+                          {% if sub_link.links.size > 0 %}
+                            <svg
+                              class="w-3 h-3 ml-1 transition-transform duration-200 absolute right-2 top-1/2 transform -translate-y-1/2 rotate-270"
+                              fill="currentColor"
+                              viewBox="0 0 20 20">
+                              <path
+                                fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                            </svg>
+                          {% endif %}
+                        </a>
+
+
+                        {% comment %} Third Layer Menu {% endcomment %}
+                        {% if sub_link.links.size > 0 %}
+                          <div class="child-submenu absolute top-0 left-full bg-white shadow-lg border border-gray-200 min-w-48 opacity-0 invisible transition-all duration-200 z-50">
+                            <ul>
+                              {% for child in sub_link.links %}
+                                <li>
+                                  <a href="{{ child.url }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-brandPrimary transition-colors duration-150">{{ child.title }}</a>
+                                </li>
+                              {% endfor %}
+
+                            </ul>
+                          </div>
+                        {% endif %}
+                      </li>
+
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <!-- Right side: Cart and Contact -->
+      <div class="header-actions flex items-center space-x-0">
+
+        <!-- Cart -->
+        <a href="{{ routes.cart_url }}" class="cart-link relative transition-colors duration-200 flex items-center justify-center w-8 lg:w-10 h-6 lg:h-8">
+          <!-- Cart Icon -->
+          {% render 'cart-icon__red' %}
+          <!-- Cart Count -->
+          {% if cart.item_count > 0 %}
+            <span class="cart-count absolute -top-2 -right-2 bg-brandPrimary text-white text-xs font-bold rounded-full h-5 w-auto flex items-center justify-center border border-brandPrimary min-w-[20px]">
+              {{ cart.item_count }}
+            </span>
+          {% endif %}
+
+        </a>
+
+        <!-- Contact Us Button -->
+        <div class="hidden lg:block">
+          <a href="{{ section.settings.contact_link | default: '/contact-us' }}" class="inline-block text-center cursor-pointer text-white rounded px-4 py-2 tracking-tight uppercase transition-all duration-300 bg-brandPrimary border-brandPrimary hover:text-brandPrimary border-2 hover:bg-white ml-3 lg:ml-6 text-sm lg:text-base font-normal">
+            {{ section.settings.contact_text | default: 'Contact Us' }}
+          </a>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo Image"
+      },
+      {
+        "type": "header",
+        "content": "Navigation Menu"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Main Navigation Menu"
+      }, {
+        "type": "header",
+        "content": "Notice Bar Settings"
+      }, {
+        "type": "checkbox",
+        "id": "enable_bottom_bar",
+        "label": "Show Notice Bar",
+        "default": true,
+        "info": "Toggle the notice bar at the top of the site"
+      }, {
+        "type": "richtext",
+        "id": "notice_text",
+        "label": "Notice Bar Text",
+        "default": "<p>Add notice text here</p>"
+      }, {
+        "type": "header",
+        "content": "Contact Button Settings"
+      }, {
+        "type": "text",
+        "id": "contact_text",
+        "label": "Contact Button Text",
+        "default": "Contact Us"
+      }, {
+        "type": "url",
+        "id": "contact_link",
+        "label": "Contact Button Link",
+        "default": "/"
+      }
+    ]
+  }
+{% endschema %}

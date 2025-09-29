@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@theme {
+  --color-brandPrimary: var(--color-primary);
+  --color-brandSecondary: var(--color-secondary);
+  --color-brandNeutral: var(--color-neutral);
+  --color-brandAccent: var(--color-accent);
+  --color-textPrimary: var(--body-text-color);
+  --color-btnPrimaryBg: var(--primary-button-background-color);
+  --color-btnPrimaryText: var(--primary-button-text-color);
+  --color-btnSecondaryBg: var(--secondary-button-background-color);
+  --color-btnSecondaryText: var(--secondary-button-text-color);
+}
+
+body {
+  @apply text-textPrimary text-base lg:text-lg;
+  font-family: Campton;
+  background-color: var(--body-background-color);
+}
+h1 {
+  font-family: Mokoko;
+  @apply mb-2 text-4xl font-normal md:text-5xl lg:mb-4 lg:text-6xl;
+}
+h2 {
+  font-family: Campton;
+  @apply mb-2 text-3xl font-semibold lg:mb-4 lg:text-4xl;
+}
+h3 {
+  font-family: Campton;
+  @apply mb-2 text-2xl font-semibold lg:mb-4 lg:text-3xl;
+}
+h4 {
+  font-family: Campton;
+  @apply mb-2 text-xl font-semibold lg:text-2xl;
+}
+h5 {
+  font-family: Mokoko;
+  @apply mb-2 text-lg font-normal lg:text-xl;
+}
+p {
+  @apply mb-4 text-base lg:text-lg;
+}
+
+ul {
+  @apply mb-4 list-inside list-disc;
+}
+
+ul li {
+  @apply mb-3;
+}
+
+nav ul,
+ul.feature-list {
+  @apply mb-0 list-none;
+}
+nav ul li {
+  @apply mb-0;
+}
+nav ul li a {
+  @apply !text-gray-600;
+}
+nav ul li.parent-link {
+  position: relative;
+}
+nav ul li.parent-link:hover .submenu,
+nav ul li.child-parent-link:hover .child-submenu {
+  @apply visible block opacity-100;
+}
+
+nav .toggle-submenu ul {
+  @apply bg-gray-200;
+}
+.hero-with-form h1 {
+  @apply text-4xl leading-snug font-light lg:text-[64px];
+}
+.hero-with-form h1 strong {
+  @apply font-bold;
+}
+.hero-with-form p {
+  @apply text-xl lg:text-2xl;
+}
+footer ul#footer-menu {
+  @apply mb-0 list-none;
+}
+footer ul#footer-menu li a {
+  @apply text-[#999999] hover:text-white;
+}
+
+button {
+  @apply cursor-pointer;
+}
+.btn {
+  @apply inline-block cursor-pointer rounded px-8 py-3 text-center text-base font-semibold tracking-wide uppercase transition-all duration-300;
+}
+.btn--primary {
+  @apply bg-btnPrimaryBg border-brandPrimary hover:text-brandPrimary text-btnPrimaryText border-2 hover:bg-white;
+}
+.btn--secondary {
+  @apply text-btnSecondaryText hover:bg-brandPrimary hover:border-brandPrimary border-2 border-white bg-white hover:text-white;
+}
+.btn--tertiary {
+  @apply bg-gray-100 text-gray-600 hover:bg-gray-200;
+}
+.slick-arrow::before {
+  @apply hidden;
+}
+a:not(.bg-brandPrimary):not(.btn) {
+  @apply text-brandPrimary;
+}
+.faq-tab-btn:hover,
+.faq-tab-btn.active {
+  background-color: var(--color-brandPrimary) !important;
+  color: #fff !important;
+}
+.faq-tab-btn:hover .faq-tab-img,
+.faq-tab-btn.active .faq-tab-img {
+  margin-top: -45px !important;
+}
+.pfr-img__block {
+  @apply my-4 flex flex-col flex-wrap lg:flex-row;
+}
+.gift-card__images ul.slick-dots li > button::before {
+  @apply opacity-0;
+}
+.gift-card__images ul.slick-dots li {
+  @apply border-brandPrimary h-3 w-3 rounded-full border-2;
+}
+.gift-card__images ul.slick-dots li.slick-active {
+  @apply bg-brandPrimary w-8;
+}
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  @apply !text-gray-400 !opacity-100;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  @apply !text-gray-400 !opacity-100;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  @apply !text-gray-400 !opacity-100;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  @apply !text-gray-400 !opacity-100;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  @apply !text-gray-400 !opacity-100;
+}
+
+.title-with-text__header h1 {
+  @apply text-brandPrimary text-center text-4xl font-bold;
+}
+.faq-tabs-heading h1,
+.faq-tabs-heading h2 {
+  @apply text-center text-3xl font-bold text-gray-800 md:text-4xl;
+}

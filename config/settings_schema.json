@@ -1,0 +1,245 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Skeleton",
+    "theme_version": "0.1.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
+  },
+
+  {
+    "name": "t:general.layout",
+    "settings": [
+      {
+        "type": "select",
+        "id": "max_page_width",
+        "label": "t:labels.page_width",
+        "options": [
+          {
+            "value": "90rem",
+            "label": "t:options.page_width.narrow"
+          },
+          {
+            "value": "110rem",
+            "label": "t:options.page_width.wide"
+          }
+        ],
+        "default": "90rem"
+      }
+    ]
+  },
+  {
+    "name": "Site Identity",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon_image",
+        "label": "Favicon image",
+        "info": "Recommended size: 32 x 32 pixels"
+      }
+    ]
+  },
+  {
+    "name": "Brand Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Brand Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "default": "#ED2129",
+        "label": "Primary color",
+        "info": "Main brand color (PerfectFeast Red)"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "default": "#5E230B",
+        "label": "Secondary dark"
+      },
+      {
+        "type": "color",
+        "id": "color_neutral",
+        "default": "#F3C7A9",
+        "label": "Neutral light"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "default": "#333333",
+        "label": "Accent Color",
+        "info": "Used for highlights and call-to-action elements"
+      },
+
+      {
+        "type": "header",
+        "content": "Neutral Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "default": "#FFFFFF",
+        "label": "Background",
+        "info": "Main background color"
+      },
+      {
+        "type": "color",
+        "id": "color_background_secondary",
+        "default": "#F8F8F8",
+        "label": "Secondary background",
+        "info": "Alternative background color"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "default": "#333333",
+        "label": "Text color",
+        "info": "Primary text color"
+      },
+      {
+        "type": "color",
+        "id": "color_text_light",
+        "default": "#666666",
+        "label": "Light text color",
+        "info": "Secondary text color"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "default": "#999999",
+        "label": "Muted text color",
+        "info": "Subtle text color for hints and descriptions"
+      }
+    ]
+  },
+
+  {
+    "name": "Button Styles",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Buttons"
+      },
+      {
+        "type": "color",
+        "id": "button_primary_bg",
+        "default": "#ED2129",
+        "label": "Primary button background"
+      },
+      {
+        "type": "color",
+        "id": "button_primary_text",
+        "default": "#FFFFFF",
+        "label": "Primary button text"
+      },
+      {
+        "type": "color",
+        "id": "button_primary_border",
+        "default": "#ED2129",
+        "label": "Primary button border"
+      },
+      {
+        "type": "header",
+        "content": "Secondary Buttons"
+      },
+      {
+        "type": "color",
+        "id": "button_secondary_bg",
+        "default": "#FFFFFF",
+        "label": "Secondary button background"
+      },
+      {
+        "type": "color",
+        "id": "button_secondary_text",
+        "default": "#ED2129",
+        "label": "Secondary button text"
+      },
+      {
+        "type": "color",
+        "id": "button_secondary_border",
+        "default": "#ED2129",
+        "label": "Secondary button border"
+      },
+      {
+        "type": "header",
+        "content": "Button Properties"
+      },
+      {
+        "type": "range",
+        "id": "button_border_radius",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "Button border radius",
+        "default": 4
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Button style",
+        "options": [
+          {
+            "value": "filled",
+            "label": "Filled"
+          },
+          {
+            "value": "outlined",
+            "label": "Outlined"
+          },
+          {
+            "value": "text",
+            "label": "Text only"
+          }
+        ],
+        "default": "filled"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Media Links"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_linkedin",
+        "label": "LinkedIn URL"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest",
+        "label": "Pinterest URL"
+      }
+    ]
+  }
+]
